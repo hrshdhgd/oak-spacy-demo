@@ -3,11 +3,10 @@
 
 import csv
 from pathlib import Path
-from typing import List
+
+import pandas as pd
 from oaklib import get_adapter
 from oaklib.datamodels.text_annotator import TextAnnotationConfiguration
-import pandas as pd
-import pyspark.pandas as ps
 
 MONDO_PREFIX = "MONDO"
 CHEBI_PREFIX = "CHEBI"
@@ -139,7 +138,7 @@ def annotate(
                     row_to_write = [response_dict.get(col) for col in annotated_columns]
                     writer.writerow(row_to_write)
 
-    
+
 
 
 if __name__ == "__main__":

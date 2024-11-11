@@ -4,6 +4,7 @@ from pathlib import Path
 
 import click
 import pandas as pd
+
 from oak_spacy_demo import __version__
 from oak_spacy_demo.main import annotate
 
@@ -52,7 +53,7 @@ def run(tool: str, input_file: str, dataframe:pd.DataFrame, column:str, prefix:s
         df = dataframe
     else:
         raise ValueError("Either input file or dataframe should be provided.")
-    
+
     if output:
         output = Path(output)
 
