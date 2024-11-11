@@ -1,10 +1,11 @@
 """Command line interface for oak-spacy-demo."""
 import logging
+from pathlib import Path
 
 import click
-
+import pandas as pd
 from oak_spacy_demo import __version__
-from oak_spacy_demo.main import demo
+from oak_spacy_demo.main import annotate
 
 __all__ = [
     "main",
@@ -35,10 +36,27 @@ def main(verbose: int, quiet: bool):
 
 
 @main.command()
-def run():
-    """Run the oak-spacy-demo's demo command."""
-    demo()
+@click.option("--tool", type=str, default="oak")
+@click.option("-i", "--input-file", type=click.Path(exists=True), required=False)
+@click.option("-d", "--dataframe", type=pd.DataFrame, required=False)
+@click.option("-c", "--column", type=str)
+@click.option("-o", "--output", type=str)
+@click.option("-p", "--prefix", type=str)
+def run(tool: str, input_file: str, dataframe:pd.DataFrame, column:str, prefix:str, output: str):
+    if input_file:
+        if Path(input_file).suffix in [".tsv", ".csv"]:
+            df = pd.read_csv(input_file, sep="\t")
+        else:
+            raise ValueError("Input file should be a .tsv or .csv file.")
+    elif dataframe:
+        df = dataframe
+    else:
+        raise ValueError("Either input file or dataframe should be provided.")
+    
+    if output:
+        output = Path(output)
 
+    annotate(dataframe=df, column=column, prefix=prefix, outfile=output)
 
 if __name__ == "__main__":
     main()
