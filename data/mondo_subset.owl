@@ -1,0 +1,1887 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.obolibrary.org/obo/mondo/mondo-base.owl#"
+     xml:base="http://purl.obolibrary.org/obo/mondo/mondo-base.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:mondo="http://purl.obolibrary.org/obo/mondo#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
+    <owl:Ontology rdf:about="http://purl.obolibrary.org/obo/mondo/mondo-base.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000115 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000115"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000233 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000233"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000589 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/IAO_0000589"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002175 -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/RO_0002175"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/mondo#excluded_subClassOf -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.obolibrary.org/obo/mondo#excluded_subClassOf"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#hasDbXref -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#hasExactSynonym -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#hasSynonymType -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#hasSynonymType"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#id -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#id"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#inSubset -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#shorthand -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#shorthand"/>
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#source -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#source"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#exactMatch -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2004/02/skos/core#exactMatch"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0002162 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0002162">
+        <oboInOwl:hasDbXref>RO:0002162</oboInOwl:hasDbXref>
+        <oboInOwl:id>in_taxon</oboInOwl:id>
+        <oboInOwl:shorthand>in_taxon</oboInOwl:shorthand>
+        <rdfs:label>in taxon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0004021 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0004021">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0004024"/>
+        <oboInOwl:hasDbXref>RO:0004021</oboInOwl:hasDbXref>
+        <oboInOwl:id>disease_has_basis_in_disruption_of</oboInOwl:id>
+        <oboInOwl:shorthand>disease_has_basis_in_disruption_of</oboInOwl:shorthand>
+        <rdfs:comment>Editor note: TODO property chain: disease_has_location &lt;- dhbido o occurs_in</rdfs:comment>
+        <rdfs:label>disease caused by disruption of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0004024 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0004024">
+        <oboInOwl:hasDbXref>RO:0004024</oboInOwl:hasDbXref>
+        <oboInOwl:id>disease_disrupts</oboInOwl:id>
+        <oboInOwl:shorthand>disease_disrupts</oboInOwl:shorthand>
+        <rdfs:label>disease disrupts</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/RO_0004026 -->
+
+    <owl:ObjectProperty rdf:about="http://purl.obolibrary.org/obo/RO_0004026">
+        <oboInOwl:hasDbXref>RO:0004026</oboInOwl:hasDbXref>
+        <oboInOwl:id>disease_has_location</oboInOwl:id>
+        <oboInOwl:shorthand>disease_has_location</oboInOwl:shorthand>
+        <rdfs:label>disease has location</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MF_0000008 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MF_0000008"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MF_0000020 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MF_0000020"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0000001 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0000001">
+        <obo:IAO_0000115>A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>DOID:4</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:799.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:4347</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MESH:D004194</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OGMS:0000031</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>Orphanet:377788</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:64572001</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C0012634</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>condition</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease or disorder, non-neoplastic</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>diseases</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>diseases and disorders</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disorders</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>medical condition</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>other disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:id>MONDO:0000001</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#ordo_disorder"/>
+        <rdfs:label>disease</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/4347"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/mesh/D004194"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/snomedct/64572001"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C0012634"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_4"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/NCIT_C2991"/>
+        <skos:exactMatch rdf:resource="http://www.orpha.net/ORDO/Orphanet_377788"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A disease is a disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>OGMS:0000031</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C0012634</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:4347</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>condition</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disease or disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disease or disorder, non-neoplastic</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>diseases</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>diseases and disorders</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disorders</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>other disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2991</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:4</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000408</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#ordo_disorder"/>
+        <oboInOwl:source>Orphanet:377788</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:799.9</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:4347</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MESH:D004194</owl:annotatedTarget>
+        <oboInOwl:source>DOID:4</oboInOwl:source>
+        <oboInOwl:source>EFO:0000408</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C2991</owl:annotatedTarget>
+        <oboInOwl:source>DOID:4</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>OGMS:0000031</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>Orphanet:377788</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:64572001</owl:annotatedTarget>
+        <oboInOwl:source>DOID:4</oboInOwl:source>
+        <oboInOwl:source>EFO:0000408</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0002025 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0002025">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/MONDO_0700096"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004024"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/MF_0000020"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0700096"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004024"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/MF_0000020"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>A disorder characterized by behavioral and/or psychological abnormalities, often accompanied by physical symptoms. The symptoms may cause clinically significant distress or impairment in social and occupational areas of functioning. Representative examples include anxiety disorders, cognitive disorders, mood disorders and schizophrenia.</obo:IAO_0000115>
+        <mondo:excluded_subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <oboInOwl:hasDbXref>DOID:150</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MESH:D001523</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MFOMD:0000004</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C2893</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:74732009</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>Psychiatric disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>Psychiatric disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasNarrowSynonym>disease of mental health</oboInOwl:hasNarrowSynonym>
+        <oboInOwl:hasNarrowSynonym>mental disorder</oboInOwl:hasNarrowSynonym>
+        <oboInOwl:hasNarrowSynonym>mental dysfunction</oboInOwl:hasNarrowSynonym>
+        <oboInOwl:hasNarrowSynonym>mental illness</oboInOwl:hasNarrowSynonym>
+        <oboInOwl:id>MONDO:0002025</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#rare_grouping"/>
+        <rdfs:label>psychiatric disorder</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/mesh/D001523"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_150"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/NCIT_C2893"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A disorder characterized by behavioral and/or psychological abnormalities, often accompanied by physical symptoms. The symptoms may cause clinically significant distress or impairment in social and occupational areas of functioning. Representative examples include anxiety disorders, cognitive disorders, mood disorders and schizophrenia.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2893</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/mondo#excluded_subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <oboInOwl:source>ISBN-13:978-1-259-64403-0</oboInOwl:source>
+        <oboInOwl:source>https://orcid.org/0000-0001-5208-3432</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:150</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MESH:D001523</owl:annotatedTarget>
+        <oboInOwl:source>DOID:150</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C2893</owl:annotatedTarget>
+        <oboInOwl:source>DOID:150</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:74732009</owl:annotatedTarget>
+        <oboInOwl:source>DOID:150</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>Psychiatric disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2893</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>Psychiatric disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2893</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"/>
+        <owl:annotatedTarget>disease of mental health</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:150</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"/>
+        <owl:annotatedTarget>mental disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2893</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"/>
+        <owl:annotatedTarget>mental dysfunction</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2893</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"/>
+        <owl:annotatedTarget>mental illness</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2893</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:source>MONDO:OTAR</oboInOwl:source>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0002039 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0002039">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004024"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/MF_0000008"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004024"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/MF_0000008"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>A disease affects cognitive processes.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>DOID:1561</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:294.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:40371</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MESH:D019965</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C92196</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:443265004</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C0009241</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>cognitive disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>cognitive disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasRelatedSynonym>organic mental disorder</oboInOwl:hasRelatedSynonym>
+        <oboInOwl:id>MONDO:0002039</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <rdfs:label>cognitive disorder</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/40371"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/mesh/D019965"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/snomedct/443265004"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C0009241"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_1561"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/NCIT_C92196"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <oboInOwl:source>DOID:1561</oboInOwl:source>
+        <oboInOwl:source>MESH:D019965</oboInOwl:source>
+        <oboInOwl:source>MONDO:Redundant</oboInOwl:source>
+        <oboInOwl:source>NCIT:C92196</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A disease affects cognitive processes.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>https://orcid.org/0000-0002-6601-2165</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:1561</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:294.9</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:40371</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MESH:D019965</owl:annotatedTarget>
+        <oboInOwl:source>DOID:1561</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C92196</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>MONDO:exact-label-match</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:443265004</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C0009241</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:40371</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>cognitive disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:1561</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>cognitive disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C92196</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+        <owl:annotatedTarget>organic mental disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:1561</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C34870</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:source>MONDO:OTAR</oboInOwl:source>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0002602 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0002602">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004026"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/UBERON_0001017"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004026"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/UBERON_0001017"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>A disease involving the central nervous system.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>DOID:331</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>EFO:0009386</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:892343</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MESH:D002493</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C2934</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:23853001</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C4021765</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>CNS disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>central nervous disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>central nervous system disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>central nervous system disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>central nervous system disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease of central nervous system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease of the central nervous system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease or disorder of central nervous system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disorder of central nervous system</oboInOwl:hasExactSynonym>
+        <oboInOwl:id>MONDO:0002602</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#rare_grouping"/>
+        <rdfs:label>central nervous system disorder</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/892343"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/mesh/D002493"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/snomedct/23853001"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C4021765"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_331"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/NCIT_C2934"/>
+        <skos:exactMatch rdf:resource="http://www.ebi.ac.uk/efo/EFO_0009386"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <oboInOwl:source>DOID:331</oboInOwl:source>
+        <oboInOwl:source>MESH:D002493</oboInOwl:source>
+        <oboInOwl:source>MONDO:Redundant</oboInOwl:source>
+        <oboInOwl:source>NCIT:C2934</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A disease involving the central nervous system.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>https://orcid.org/0000-0002-6601-2165</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:331</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>EFO:0009386</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:EFO</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:892343</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MESH:D002493</owl:annotatedTarget>
+        <oboInOwl:source>DOID:331</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C2934</owl:annotatedTarget>
+        <oboInOwl:source>DOID:331</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:23853001</owl:annotatedTarget>
+        <oboInOwl:source>DOID:331</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C4021765</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:892343</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>CNS disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>https://orcid.org/0000-0001-5208-3432</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>central nervous disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:331</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>central nervous system disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C2934</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>central nervous system disease or disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:design_pattern</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MONDO:patterns/location</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>central nervous system disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C2934</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disease of central nervous system</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location_top</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disease of the central nervous system</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>ISBN-13:978-1-259-64403-0</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disorder of central nervous system</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location_top</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C2934</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:source>MONDO:OTAR</oboInOwl:source>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0005071 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0005071">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/MONDO_0700096"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004026"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/UBERON_0001016"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0700096"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004026"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/UBERON_0001016"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>A non-neoplastic or neoplastic disorder that affects the brain, spinal cord, or peripheral nerves.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>DOID:863</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>EFO:0000618</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD10CM:G00-G99</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:349.89</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:349.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:14336</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MESH:D009422</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C26835</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:118940003</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C0027765</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>Wikipedia:Nervous_system_disease</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>disease of nervous system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease or disorder of nervous system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disorder of nervous system</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>nervous system disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>nervous system disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>nervous system disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>neurologic disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>neurologic disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>neurological disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>neurological disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:id>MONDO:0005071</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#rare_grouping"/>
+        <rdfs:comment>&apos;psychiatric disorder&apos; is not classified as a &apos;nervous system disorder&apos; in Mondo (though it is often as such): the hallmarks of psychiatric disorders are based in behavior and emotional state, and the relation with nervous system malfunction or damage is not always clearly determined.</rdfs:comment>
+        <rdfs:label>nervous system disorder</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/14336"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/mesh/D009422"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/snomedct/118940003"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C0027765"/>
+        <skos:exactMatch rdf:resource="http://purl.bioontology.org/ontology/ICD10CM/G00-G99"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_863"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/NCIT_C26835"/>
+        <skos:exactMatch rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000618"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>nervous system disease or disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:design_pattern</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MONDO:patterns/location</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>nervous system disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C26835</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>neurologic disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:863</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>neurologic disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:863</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ISBN-13:978-1-259-64403-0</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C26835</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>neurological disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:863</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>neurological disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:863</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:source>MONDO:OTAR</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A non-neoplastic or neoplastic disorder that affects the brain, spinal cord, or peripheral nerves.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:C26835</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:863</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000618</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>EFO:0000618</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:EFO</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD10CM:G00-G99</owl:annotatedTarget>
+        <oboInOwl:source>DOID:863</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>https://github.com/monarch-initiative/mondo/issues/4536</oboInOwl:source>
+        <oboInOwl:source>https://orcid.org/0000-0001-5208-3432</oboInOwl:source>
+        <oboInOwl:source>https://orcid.org/0000-0002-4142-7153</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:349.89</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:349.9</owl:annotatedTarget>
+        <oboInOwl:source>DOID:863</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:14336</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MESH:D009422</owl:annotatedTarget>
+        <oboInOwl:source>DOID:863</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C26835</owl:annotatedTarget>
+        <oboInOwl:source>DOID:863</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>NCIT:C26835</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:118940003</owl:annotatedTarget>
+        <oboInOwl:source>DOID:863</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C0027765</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:14336</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>Wikipedia:Nervous_system_disease</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000618</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disease of nervous system</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location_top</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disorder of nervous system</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location_top</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C26835</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005071"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>nervous system disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0005084 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0005084">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004021"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/MF_0000020"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002025"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004021"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/MF_0000020"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>A disease that has its basis in the disruption of mental process.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>EFO:0000677</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:290-299.99</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:298.8</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:V11.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:14047</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MESH:D001523</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C2893</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NIFSTD:birnlex_12669</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:74732009</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C0004936</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>disorder of mental process</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>mental or behavioral disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>mental or behavioural disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>mental process disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:id>MONDO:0005084</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <rdfs:label>mental disorder</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/14047"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/snomedct/74732009"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C0004936"/>
+        <skos:exactMatch rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000677"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A disease that has its basis in the disruption of mental process.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/basis_in_disruption_of_process</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>EFO:0000677</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:EFO</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:290-299.99</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000677</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:298.8</owl:annotatedTarget>
+        <oboInOwl:source>DOID:2468</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:V11.9</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:14047</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MESH:D001523</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000677</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C2893</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000677</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NIFSTD:birnlex_12669</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000677</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:74732009</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000677</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C0004936</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:14047</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disorder of mental process</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/basis_in_disruption_of_process</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>mental or behavioral disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:2468</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>mental or behavioural disorder</owl:annotatedTarget>
+        <oboInOwl:hasSynonymType rdf:resource="http://purl.obolibrary.org/obo/OMO_0003005"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>mental process disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:design_pattern</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:source>MONDO:OTAR</oboInOwl:source>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0005090 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0005090">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <obo:IAO_0000115>A major psychotic disorder characterized by abnormalities in the perception or expression of reality. It affects the cognitive and psychomotor functions. Common clinical signs and symptoms include delusions, hallucinations, disorganized thinking, and retreat from reality.</obo:IAO_0000115>
+        <obo:IAO_0000233 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://github.com/monarch-initiative/mondo/issues/4521</obo:IAO_0000233>
+        <obo:IAO_0000589>schizophrenia (disease)</obo:IAO_0000589>
+        <oboInOwl:hasBroadSynonym>schizophrenia 12</oboInOwl:hasBroadSynonym>
+        <oboInOwl:hasDbXref>DOID:5419</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>HP:0100753</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:295</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:295.8</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:295.80</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:295.85</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:295.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:295.90</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:48574</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C3362</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NIFSTD:birnlex_2104</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OMIM:181500</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>Orphanet:3140</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:58214004</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C0036341</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>icd11.foundation:1683919430</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>schizophrenia</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>schizophrenia (disease)</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>schizophrenia-1</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasRelatedSynonym>SCZD</oboInOwl:hasRelatedSynonym>
+        <oboInOwl:hasRelatedSynonym>schizoaffective disorder</oboInOwl:hasRelatedSynonym>
+        <oboInOwl:hasRelatedSynonym>schizophrenia with or without an affective disorder</oboInOwl:hasRelatedSynonym>
+        <oboInOwl:hasRelatedSynonym>schizophrenia, susceptibility to</oboInOwl:hasRelatedSynonym>
+        <oboInOwl:id>MONDO:0005090</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <rdfs:label>schizophrenia</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/48574"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/snomedct/58214004"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C0036341"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_5419"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/NCIT_C3362"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/mondo/sources/icd11foundation/1683919430"/>
+        <skos:exactMatch rdf:resource="https://omim.org/entry/181500"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <oboInOwl:source>DOID:5419</oboInOwl:source>
+        <oboInOwl:source>https://orcid.org/0000-0002-6601-2165</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A major psychotic disorder characterized by abnormalities in the perception or expression of reality. It affects the cognitive and psychomotor functions. Common clinical signs and symptoms include delusions, hallucinations, disorganized thinking, and retreat from reality.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>NCIT:P378</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym"/>
+        <owl:annotatedTarget>schizophrenia 12</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>OMIM:181500</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OMIM:genemap2</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:5419</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>HP:0100753</owl:annotatedTarget>
+        <oboInOwl:source>DOID:5419</oboInOwl:source>
+        <oboInOwl:source>MONDO:otherHierarchy</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:295</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:295.8</owl:annotatedTarget>
+        <oboInOwl:source>DOID:5419</oboInOwl:source>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:295.80</owl:annotatedTarget>
+        <oboInOwl:source>DOID:5419</oboInOwl:source>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:295.85</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:295.9</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:295.90</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:48574</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C3362</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NIFSTD:birnlex_2104</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>OMIM:181500</owl:annotatedTarget>
+        <oboInOwl:source>DOID:5419</oboInOwl:source>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>Orphanet:3140</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentObsolete</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:58214004</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0000692</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C0036341</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:48574</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>icd11.foundation:1683919430</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>schizophrenia</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:Lexical</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MONDO:ambiguous</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OMIM:181500</oboInOwl:hasDbXref>
+        <oboInOwl:hasSynonymType rdf:resource="http://purl.obolibrary.org/obo/mondo#CLINGEN_LABEL"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>schizophrenia (disease)</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>https://orcid.org/0000-0002-6601-2165</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>schizophrenia-1</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:5419</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+        <owl:annotatedTarget>SCZD</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:Lexical</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OMIM:181500</oboInOwl:hasDbXref>
+        <oboInOwl:hasSynonymType rdf:resource="http://purl.obolibrary.org/obo/mondo#ABBREVIATION"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+        <owl:annotatedTarget>schizoaffective disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>OMIM:181500</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+        <owl:annotatedTarget>schizophrenia with or without an affective disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>OMIM:181500</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+        <owl:annotatedTarget>schizophrenia, susceptibility to</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>OMIM:181500</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OMIM:genemap2</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:source>MONDO:OTAR</oboInOwl:source>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0005485 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0005485">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <obo:IAO_0000115>An abnormal condition of the mind that involves a loss of contact with reality. People experiencing psychosis may exhibit personality changes and thought disorder. Depending on its severity, this may be accompanied by unusual or bizarre behavior, as well as difficulty with social interaction and impairment in carrying out daily life activities.</obo:IAO_0000115>
+        <oboInOwl:hasBroadSynonym>mental or behavioral disorder</oboInOwl:hasBroadSynonym>
+        <oboInOwl:hasBroadSynonym>mental or behavioural disorder</oboInOwl:hasBroadSynonym>
+        <oboInOwl:hasDbXref>DOID:2468</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>EFO:0005407</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>HP:0000709</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:298.8</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:298.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:19568</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C78576</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:69322001</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C0033975</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>psychosis</oboInOwl:hasExactSynonym>
+        <oboInOwl:id>MONDO:0005485</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <rdfs:label>psychotic disorder</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/19568"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/snomedct/69322001"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C0033975"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_2468"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/NCIT_C78576"/>
+        <skos:exactMatch rdf:resource="http://www.ebi.ac.uk/efo/EFO_0005407"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002039"/>
+        <oboInOwl:source>DOID:2468</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005084"/>
+        <oboInOwl:source>EFO:0005407</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>An abnormal condition of the mind that involves a loss of contact with reality. People experiencing psychosis may exhibit personality changes and thought disorder. Depending on its severity, this may be accompanied by unusual or bizarre behavior, as well as difficulty with social interaction and impairment in carrying out daily life activities.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>Wikipedia:Psychosis</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym"/>
+        <owl:annotatedTarget>mental or behavioral disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:2468</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym"/>
+        <owl:annotatedTarget>mental or behavioural disorder</owl:annotatedTarget>
+        <oboInOwl:hasSynonymType rdf:resource="http://purl.obolibrary.org/obo/OMO_0003005"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:2468</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>EFO:0005407</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:EFO</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>HP:0000709</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:otherHierarchy</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:298.8</owl:annotatedTarget>
+        <oboInOwl:source>DOID:2468</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:298.9</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:19568</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C78576</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0005407</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:69322001</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C0033975</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:19568</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>psychosis</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:ambiguous</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005485"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:source>MONDO:OTAR</oboInOwl:source>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0005560 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0005560">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004026"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/UBERON_0000955"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0004026"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/UBERON_0000955"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>A disease affecting the brain or part of the brain.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>DOID:936</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>EFO:0005774</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:348.3</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:348.30</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:348.8</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>ICD9:348.9</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:14214</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MESH:D001927</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C96413</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>SCTID:81308009</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C0006111</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>brain disease</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>brain disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease of brain</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disease or disorder of brain</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>disorder of brain</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasNarrowSynonym>encephalopathy</oboInOwl:hasNarrowSynonym>
+        <oboInOwl:id>MONDO:0005560</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <rdfs:comment>Editor note: NCIT has different classes for brain disease and encephalopathy</rdfs:comment>
+        <rdfs:label>brain disorder</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/14214"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/mesh/D001927"/>
+        <skos:exactMatch rdf:resource="http://identifiers.org/snomedct/81308009"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C0006111"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_936"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/NCIT_C96413"/>
+        <skos:exactMatch rdf:resource="http://www.ebi.ac.uk/efo/EFO_0005774"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0002602"/>
+        <oboInOwl:source>DOID:936</oboInOwl:source>
+        <oboInOwl:source>MESH:D001927</oboInOwl:source>
+        <oboInOwl:source>MONDO:Redundant</oboInOwl:source>
+        <oboInOwl:source>NCIT:C26920/inferred</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A disease affecting the brain or part of the brain.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>EFO:0005774</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:936</owl:annotatedTarget>
+        <oboInOwl:source>EFO:0005774</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>EFO:0005774</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:EFO</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:348.3</owl:annotatedTarget>
+        <oboInOwl:source>DOID:936</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:348.30</owl:annotatedTarget>
+        <oboInOwl:source>DOID:936</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:348.8</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+        <oboInOwl:source>MONDO:relatedTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>ICD9:348.9</owl:annotatedTarget>
+        <oboInOwl:source>DOID:936</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+        <oboInOwl:source>MONDO:i2s</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:14214</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MESH:D001927</owl:annotatedTarget>
+        <oboInOwl:source>DOID:936</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>NCIT:C96413</owl:annotatedTarget>
+        <oboInOwl:source>DOID:936</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>SCTID:81308009</owl:annotatedTarget>
+        <oboInOwl:source>DOID:936</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C0006111</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:14214</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>brain disease</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>brain disease or disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:design_pattern</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MONDO:patterns/location</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disease of brain</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location_top</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>disorder of brain</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:patterns/location_top</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasNarrowSynonym"/>
+        <owl:annotatedTarget>encephalopathy</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:936</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>NCIT:C26920</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005560"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#inSubset"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/mondo#otar"/>
+        <oboInOwl:source>MONDO:OTAR</oboInOwl:source>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0010897 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0010897">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <obo:IAO_0000115>A schizophrenia that has material basis in an autosomal dominant mutation of SCZD3 on chromosome 6p23.</obo:IAO_0000115>
+        <oboInOwl:hasDbXref>DOID:0070079</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MEDGEN:324936</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OMIM:600511</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>UMLS:C1838069</oboInOwl:hasDbXref>
+        <oboInOwl:hasExactSynonym>SCZD3</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasExactSynonym>schizophrenia 3</oboInOwl:hasExactSynonym>
+        <oboInOwl:hasRelatedSynonym>schizophrenia 3 with or without an affective disorder</oboInOwl:hasRelatedSynonym>
+        <oboInOwl:hasRelatedSynonym>schizophrenia susceptibility locus, chromosome 6-related</oboInOwl:hasRelatedSynonym>
+        <oboInOwl:id>MONDO:0010897</oboInOwl:id>
+        <rdfs:label>schizophrenia 3</rdfs:label>
+        <skos:exactMatch rdf:resource="http://identifiers.org/medgen/324936"/>
+        <skos:exactMatch rdf:resource="http://linkedlifedata.com/resource/umls/id/C1838069"/>
+        <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/DOID_0070079"/>
+        <skos:exactMatch rdf:resource="https://omim.org/entry/600511"/>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0005090"/>
+        <oboInOwl:source>DC-OMIM:600511</oboInOwl:source>
+        <oboInOwl:source>DOID:0070079</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://purl.obolibrary.org/obo/IAO_0000115"/>
+        <owl:annotatedTarget>A schizophrenia that has material basis in an autosomal dominant mutation of SCZD3 on chromosome 6p23.</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:0070079</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>DOID:0070079</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>MEDGEN:324936</owl:annotatedTarget>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>OMIM:600511</owl:annotatedTarget>
+        <oboInOwl:source>DOID:0070079</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasDbXref"/>
+        <owl:annotatedTarget>UMLS:C1838069</owl:annotatedTarget>
+        <oboInOwl:source>MEDGEN:324936</oboInOwl:source>
+        <oboInOwl:source>MONDO:MEDGEN</oboInOwl:source>
+        <oboInOwl:source>MONDO:equivalentTo</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>SCZD3</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>DOID:0070079</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>MONDO:Lexical</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OMIM:600511</oboInOwl:hasDbXref>
+        <oboInOwl:hasSynonymType rdf:resource="http://purl.obolibrary.org/obo/mondo#ABBREVIATION"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>schizophrenia 3</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>MONDO:Lexical</oboInOwl:hasDbXref>
+        <oboInOwl:hasDbXref>OMIM:600511</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+        <owl:annotatedTarget>schizophrenia 3 with or without an affective disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>OMIM:600511</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0010897"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym"/>
+        <owl:annotatedTarget>schizophrenia susceptibility locus, chromosome 6-related</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>OMIM:600511</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MONDO_0700096 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/MONDO_0700096">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002162"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000233 rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://github.com/monarch-initiative/mondo/issues/5858</obo:IAO_0000233>
+        <obo:RO_0002175 rdf:resource="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+        <terms:creator rdf:resource="https://orcid.org/0000-0002-4142-7153"/>
+        <oboInOwl:hasExactSynonym>human disease or disorder</oboInOwl:hasExactSynonym>
+        <oboInOwl:id>MONDO:0700096</oboInOwl:id>
+        <oboInOwl:inSubset rdf:resource="http://purl.obolibrary.org/obo/mondo#rare_grouping"/>
+        <rdfs:label>human disease</rdfs:label>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0700096"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <owl:annotatedTarget rdf:resource="http://purl.obolibrary.org/obo/MONDO_0000001"/>
+        <oboInOwl:source>http://orcid.org/0000-0002-4142-7153</oboInOwl:source>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="http://purl.obolibrary.org/obo/MONDO_0700096"/>
+        <owl:annotatedProperty rdf:resource="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym"/>
+        <owl:annotatedTarget>human disease or disorder</owl:annotatedTarget>
+        <oboInOwl:hasDbXref>https://orcid.org/0000-0001-5208-3432</oboInOwl:hasDbXref>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/NCBITaxon_9606 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/NCBITaxon_9606"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/UBERON_0000955 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/UBERON_0000955"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/UBERON_0001016 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/UBERON_0001016"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/UBERON_0001017 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/UBERON_0001017"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi -->
+

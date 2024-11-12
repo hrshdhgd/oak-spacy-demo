@@ -22,17 +22,6 @@ SUPPLEMENT = "supplement"
 REPLACEMENT = "replacement"
 CUSTOM_TERM_COLUMN = "custom_term"
 
-
-DATA_DIR = Path(__file__).parents[2] / "data"
-
-MONDO_SOURCE = DATA_DIR / "mondo.owl"
-CHEBI_SOURCE = "data"
-
-PREFIX_SOURCE_MAP = {
-    MONDO_PREFIX: MONDO_SOURCE,
-    CHEBI_PREFIX: CHEBI_SOURCE,
-}
-
 def _overlap(a, b):
     """Get number of characters in 2 strings that overlap."""
     return len(set(a) & set(b))
@@ -40,21 +29,19 @@ def _overlap(a, b):
 def annotate(
     dataframe:pd.DataFrame,
     column: str,
-    prefix: str,
-    # exclusion_list: List,
+    resource: str,
     outfile: Path,
     ):
     """
     Annotate dataframe column text using oaklib + llm.
 
     :param dataframe: Input DataFrame
-    :param prefix: Ontology to be used.
-    :param exclusion_list: Tokens that can be ignored.
+    :param column: Column to be annotated.
+    :param resource: ontology resource file path.
     :param outfile: Output file path.
     """
-    ontology = prefix
     outfile_for_unmatched = outfile.with_name(outfile.stem + "_unmatched" + outfile.suffix)
-    oi = get_adapter(f"sqlite:{PREFIX_SOURCE_MAP[ontology]}")
+    oi = get_adapter(f"sqlite:{resource}")
     matches_whole_text = True
     annotated_columns = [
         OBJECT_ID_COLUMN,
@@ -137,6 +124,8 @@ def annotate(
                     # Ensure the order of columns matches the header
                     row_to_write = [response_dict.get(col) for col in annotated_columns]
                     writer.writerow(row_to_write)
+    pd.read_csv(outfile, sep="\t").drop_duplicates().to_csv(outfile, index=False, sep="\t")
+    pd.read_csv(outfile_for_unmatched, sep="\t").drop_duplicates().to_csv(outfile_for_unmatched, index=False, sep="\t")
 
 
 
