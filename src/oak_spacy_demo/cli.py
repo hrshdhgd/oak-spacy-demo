@@ -6,7 +6,7 @@ import click
 import pandas as pd
 
 from oak_spacy_demo import __version__
-from oak_spacy_demo.main import annotate
+from oak_spacy_demo.main import annotate_via_oak, annotate_via_spacy
 
 __all__ = [
     "main",
@@ -37,13 +37,13 @@ def main(verbose: int, quiet: bool):
 
 
 @main.command()
-@click.option("--tool", type=str, default="oak")
+@click.option("--tool", default="oak", type=click.Choice(["oak", "spacy"]))
 @click.option("-i", "--input-file", type=click.Path(exists=True), required=False)
 @click.option("-d", "--dataframe", type=pd.DataFrame, required=False)
 @click.option("-c", "--column", type=str)
 @click.option("-o", "--output", type=str)
 @click.option("-r", "--resource", type=str)
-def run(tool: str, input_file: str, dataframe:pd.DataFrame, column:str, resource:str, output: str):
+def annotate(tool: str, input_file: str, dataframe:pd.DataFrame, column:str, resource:str, output: str):
     if input_file:
         if Path(input_file).suffix in [".tsv", ".csv"]:
             df = pd.read_csv(input_file, sep="\t")
@@ -56,8 +56,12 @@ def run(tool: str, input_file: str, dataframe:pd.DataFrame, column:str, resource
 
     if output:
         output = Path(output)
-
-    annotate(dataframe=df, column=column, resource=resource, outfile=output)
+    if tool == "oak":
+        annotate_via_oak(dataframe=df, column=column, resource=resource, outfile=output)
+    elif tool == "spacy":
+        annotate_via_spacy(dataframe=df, column=column, resource=resource, outfile=output)
+    else:
+        raise ValueError("Tool should be either 'oak' or 'spacy'.")
 
 if __name__ == "__main__":
     main()

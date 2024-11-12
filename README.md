@@ -3,7 +3,7 @@
 Comparing annotations between oaklib and spacy.
 
 
-example CLI command:
+example CLI command to run oak:
 ```bash
-osd run --input-file tests/input/test_diseases.tsv --column label -o abcd.tsv --resource data/mondo.owl
+osd annotate --tool oak --input-file tests/input/test_diseases.tsv --column label -o abcd.tsv --resource data/mondo.owl
 ```

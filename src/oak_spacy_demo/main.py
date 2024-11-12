@@ -26,7 +26,7 @@ def _overlap(a, b):
     """Get number of characters in 2 strings that overlap."""
     return len(set(a) & set(b))
 
-def annotate(
+def annotate_via_oak(
     dataframe:pd.DataFrame,
     column: str,
     resource: str,
@@ -127,7 +127,21 @@ def annotate(
     pd.read_csv(outfile, sep="\t").drop_duplicates().to_csv(outfile, index=False, sep="\t")
     pd.read_csv(outfile_for_unmatched, sep="\t").drop_duplicates().to_csv(outfile_for_unmatched, index=False, sep="\t")
 
+def annotate_via_spacy(
+    dataframe:pd.DataFrame,
+    column: str,
+    resource: str,
+    outfile: Path,
+    ):
+    """
+    Annotate dataframe column text using spacy.
 
+    :param dataframe: Input DataFrame
+    :param column: Column to be annotated.
+    :param resource: ontology resource file path.
+    :param outfile: Output file path.
+    """
+    pass
 
 
 if __name__ == "__main__":
