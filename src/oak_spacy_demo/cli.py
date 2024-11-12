@@ -6,7 +6,7 @@ import click
 import pandas as pd
 
 from oak_spacy_demo import __version__
-from oak_spacy_demo.main import annotate_via_oak, annotate_via_spacy
+from oak_spacy_demo.oak import annotate_via_oak, annotate_via_spacy
 
 __all__ = [
     "main",

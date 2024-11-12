@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from oak_spacy_demo.main import annotate_via_oak
+from oak_spacy_demo.oak import annotate_via_oak
 
 OUTPUT_DIR = Path(__file__).parents[0] / "output"
 DATA_DIR = Path(__file__).parents[1] / "data"
