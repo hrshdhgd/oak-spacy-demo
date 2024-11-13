@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 **/.DS_Store
 data/mondo.*
-cache/ontology_cache.json
+cache/*_cache.json

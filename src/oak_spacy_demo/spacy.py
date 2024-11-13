@@ -15,6 +15,11 @@ from spacy.tokens import Doc
 from .constants import annotated_columns
 
 
+def get_ontology_cache_filename(resource: str) -> str:
+    """Get the ontology cache filename based on the resource file."""
+    resource_path = Path(resource)
+    return resource_path.stem + ".json"
+
 @dataclass
 class AnnotationConfig:
     """Configuration for annotation process."""
@@ -30,7 +35,7 @@ class AnnotationConfig:
         "bionlp13cg_md": "en_ner_bionlp13cg_md",
     }
     SCI_SPACY_LINKERS = ["umls", "mesh", "go", "hpo", "rxnorm"]
-    ONTOLOGY_CACHE_FILENAME = "ontology_cache.json"
+
 
 @dataclass
 class AnnotationResult:
@@ -166,7 +171,7 @@ def annotate_via_spacy(
     """
     # Setup paths
     cache_dir = cache_dir or Path.cwd()
-    cache_file = cache_dir / AnnotationConfig.ONTOLOGY_CACHE_FILENAME
+    cache_file = cache_dir / get_ontology_cache_filename(resource)
     outfile_unmatched = outfile.with_name(f"{outfile.stem}_unmatched{outfile.suffix}")
 
     # Setup resource
