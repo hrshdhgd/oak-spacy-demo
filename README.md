@@ -6,7 +6,7 @@ Comparing annotations between oaklib and spacy.
 
 example CLI command to run oak:
 ```bash
-osd annotate --tool oak --input-file tests/input/test_diseases.tsv --column label -o abcd.tsv --resource data/mondo.owl
+osd annotate --tool oak --input-file tests/input/test_diseases.tsv --column label -o oak_output.tsv --resource data/mondo.owl
 ```
 
 
@@ -21,3 +21,8 @@ osd annotate --tool oak --input-file tests/input/test_diseases.tsv --column labe
  - en_ner_jnlpba_md: https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_jnlpba_md-0.5.4.tar.gz
  - en_ner_bc5cdr_md: https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_bc5cdr_md-0.5.4.tar.gz
  - en_ner_bionlp13cg_md: https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_bionlp13cg_md-0.5.4.tar.gz
+
+ example CLI command to run oak:
+```bash
+osd annotate --tool spacy --input-file tests/input/test_diseases.tsv --column label -o spacy_output.tsv --resource data/mondo.owl
+```

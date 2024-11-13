@@ -1,25 +1,21 @@
 """Main python file with PySpark-based text annotation functionality."""
 
-from pathlib import Path
-from typing import Dict, List, Tuple
 from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List
 
 import pandas as pd
-from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.functions import col, udf, explode, collect_set
-from pyspark.sql.types import (
-    StructType, 
-    StructField, 
-    StringType, 
-    ArrayType, 
-    MapType
-)
 from oaklib import get_adapter
-from oaklib.datamodels.text_annotator import TextAnnotationConfiguration, TextAnnotation
+from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, explode, udf
+from pyspark.sql.types import ArrayType, StringType, StructField, StructType
+
 
 @dataclass
 class AnnotationResult:
     """Container for annotation results to improve code readability."""
+
     object_id: str
     object_label: str
     match_type: str
@@ -88,19 +84,20 @@ def annotate_via_oak_spark(
         column: Column to be annotated
         resource: Ontology resource file path
         outfile: Output file path
+
     """
     # Initialize Spark
     spark = create_spark_session()
-    
+
     # Convert input DataFrame to Spark DataFrame
     spark_df = spark.createDataFrame(input_df)
-    
+
     # Setup resource path and adapter
     resource_path = Path(resource)
     db_path = resource.replace(resource_path.suffix, ".db")
     resource = db_path if Path(db_path).exists() else resource
     adapter = get_adapter(f"sqlite:{resource}")
-    
+
     # Create configurations
     exact_config = TextAnnotationConfiguration(
         include_aliases=True,
