@@ -3,28 +3,31 @@
 import csv
 import json
 import logging
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Iterator
 import multiprocessing as mp
+from dataclasses import dataclass
 from functools import partial
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
-from oak_spacy_demo.spark.spacy import build_ontology, get_ontology_cache_filename
 import spacy
 from curies.api import NoCURIEDelimiterError
 from oaklib import get_adapter
-from scispacy.abbreviation import AbbreviationDetector
 from spacy.language import Language
 from spacy.tokens import Doc
+
+from oak_spacy_demo.spark.spacy import build_ontology, get_ontology_cache_filename
 
 from .constants import _get_uri_converter, annotated_columns
 
 logger = logging.getLogger(__name__)
 
+
 # Existing dataclasses and helper classes remain the same
 @dataclass
 class AnnotationConfig:
+    """Configuration for annotation."""
+
     MODELS = {
         "sci_sm": "en_core_sci_sm",
         "sci_md": "en_core_sci_md",
@@ -36,8 +39,11 @@ class AnnotationConfig:
         "bionlp13cg_md": "en_ner_bionlp13cg_md",
     }
 
+
 @dataclass
 class AnnotationResult:
+    """Container for annotation results to improve code readability."""
+
     label: Optional[str]
     uri: Optional[str]
     text: Optional[str]
@@ -46,40 +52,48 @@ class AnnotationResult:
     start: Optional[int]
     end: Optional[int]
 
+
 class OntologyCache:
+    """Cache for ontology."""
+
     def __init__(self, cache_path: Path):
+        """Initialize cache with cache path."""
         self.cache_path = cache_path
 
     def load(self) -> Dict[str, str]:
+        """Load ontology from cache."""
         if self.cache_path.exists():
             with open(self.cache_path, "r") as f:
                 return json.load(f)
         return {}
 
     def save(self, ontology: Dict[str, str]) -> None:
+        """Save ontology to cache."""
         with open(self.cache_path, "w") as f:
             json.dump(ontology, f, indent=4)
+
 
 def setup_nlp_pipeline(model_name: str, patterns: List[Dict], linker: str) -> Language:
     """Entity ruler setup for spaCy pipeline."""
     nlp = spacy.load(AnnotationConfig.MODELS.get(model_name, "sci_sm"))
     ruler = nlp.add_pipe("entity_ruler", before="ner")
-    nlp.add_pipe("abbreviation_detector")
     ruler.add_patterns(patterns)
     return nlp
+
 
 def process_batch(texts: List[str], nlp: Language) -> List[Tuple[List[AnnotationResult], bool]]:
     """Process a batch of texts and return results."""
     results = []
-    for doc, text in zip(nlp.pipe(texts), texts):
+    for doc, text in zip(nlp.pipe(texts), texts, strict=False):
         batch_results = process_entities(doc, text)
         results.append(batch_results)
     return results
 
+
 def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult], bool]:
     """Process entities from spaCy doc."""
     results = []
-    exact_match_found = False
+    # exact_match_found = False
     converter = _get_uri_converter()
 
     for ent in doc.ents:
@@ -89,7 +103,7 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
         except NoCURIEDelimiterError as e:
             uri = ent.label_
             logger.warning(f"Error expanding URI for {ent.label_}: {e}")
-        
+
         result = AnnotationResult(
             label=ent.label_,
             uri=uri,
@@ -100,34 +114,39 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
             end=ent.end_char,
         )
         results.append(result)
-        if is_exact:
-            exact_match_found = True
+        # if is_exact:
+        #     exact_match_found = True
 
     if not results:
         results.append(
             AnnotationResult(
-                label=None, uri=None, text=None, source_text=source_text,
-                exact_match=False, start=None, end=None
+                label=None, uri=None, text=None, source_text=source_text, exact_match=False, start=None, end=None
             )
         )
 
-    return results, exact_match_found
+    return results
 
-def write_results_batch(results_batch: List[Tuple[List[AnnotationResult], bool]], 
-                       queue: mp.Queue) -> None:
+
+def write_results_batch(results_batch: List[Tuple[List[AnnotationResult], bool]], queue: mp.Queue) -> None:
     """Write batch results to queue for processing."""
-    for results, exact_match in results_batch:
+    for results in results_batch:
         for result in results:
-            row = [result.label, result.uri, result.text, result.source_text, 
-                  result.exact_match, result.start, result.end]
+            row = [
+                result.label,
+                result.uri,
+                result.text,
+                result.source_text,
+                result.exact_match,
+                result.start,
+                result.end,
+            ]
             queue.put((result.exact_match, row))
 
-def writer_process(queue: mp.Queue, outfile: Path, 
-                  outfile_unmatched: Path, done_event: mp.Event) -> None:
+
+def writer_process(queue: mp.Queue, outfile: Path, outfile_unmatched: Path, done_event: mp.Event) -> None:
     """Process that handles writing results to files."""
-    with open(outfile, "w", newline="") as f1, \
-         open(outfile_unmatched, "w", newline="") as f2:
-        
+    with open(outfile, "w", newline="") as f1, open(outfile_unmatched, "w", newline="") as f2:
+
         writer_exact = csv.writer(f1, delimiter="\t", quoting=csv.QUOTE_NONE)
         writer_partial = csv.writer(f2, delimiter="\t", quoting=csv.QUOTE_NONE)
 
@@ -145,6 +164,7 @@ def writer_process(queue: mp.Queue, outfile: Path,
             except:
                 continue
 
+
 def annotate_via_spacy(
     dataframe: pd.DataFrame,
     column: str,
@@ -154,7 +174,7 @@ def annotate_via_spacy(
     model: str = "sci_sm",
     linker: str = "umls",
     batch_size: int = 1000,
-    n_processes: int = None
+    n_processes: int = None,
 ) -> None:
     """
     Multiprocessing-enabled annotation of dataframe column text using spacy.
@@ -166,8 +186,10 @@ def annotate_via_spacy(
         outfile: Output file path
         cache_dir: Directory for cache files
         model: SciSpacy model to use
+        linker: SciSpaCy linker to use for ontology expansion
         batch_size: Number of texts to process in each batch
         n_processes: Number of processes to use (defaults to CPU count - 1)
+
     """
     if n_processes is None:
         n_processes = max(1, mp.cpu_count() - 1)
@@ -198,27 +220,21 @@ def annotate_via_spacy(
     nlp = setup_nlp_pipeline(model_name=model, patterns=patterns, linker=linker)
 
     # Setup multiprocessing components
-    mp.set_start_method('spawn', force=True)
+    mp.set_start_method("spawn", force=True)
     queue = mp.Queue()
     done_event = mp.Event()
 
     # Start writer process
-    writer_proc = mp.Process(
-        target=writer_process,
-        args=(queue, outfile, outfile_unmatched, done_event)
-    )
+    writer_proc = mp.Process(target=writer_process, args=(queue, outfile, outfile_unmatched, done_event))
     writer_proc.start()
 
     # Process texts in parallel
     texts = dataframe[column].unique()
-    text_batches = [
-        texts[i:i + batch_size] 
-        for i in range(0, len(texts), batch_size)
-    ]
+    text_batches = [texts[i : i + batch_size] for i in range(0, len(texts), batch_size)]
 
     with mp.Pool(processes=n_processes) as pool:
         process_batch_partial = partial(process_batch, nlp=nlp)
-        
+
         # Process batches and write results
         for results_batch in pool.imap(process_batch_partial, text_batches):
             write_results_batch(results_batch, queue)
@@ -231,6 +247,7 @@ def annotate_via_spacy(
     for file in (outfile, outfile_unmatched):
         df = pd.read_csv(file, sep="\t")
         df.drop_duplicates().to_csv(file, index=False, sep="\t")
+
 
 if __name__ == "__main__":
     pass

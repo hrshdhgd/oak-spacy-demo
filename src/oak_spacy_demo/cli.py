@@ -77,7 +77,7 @@ def annotate(
     else:
         output = Path(f"{column}.tsv")
 
-    n_processes = max(1, os.cpu_count()-1)
+    n_processes = max(1, os.cpu_count() - 1)
     if tool == "oak":
         annotate_via_oak(dataframe=df, column=column, resource=resource, outfile=output, n_processes=n_processes)
     elif tool == "spacy":
