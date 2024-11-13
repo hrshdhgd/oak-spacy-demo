@@ -3,6 +3,7 @@
 import curies
 
 OBJECT_ID_COLUMN = "object_id"
+OBJECT_URI_COLUMN = "object_uri"
 OBJECT_LABEL_COLUMN = "object_label"
 SUBJECT_LABEL_COLUMN = "subject_label"
 MATCHES_WHOLE_TEXT_COLUMN = "matches_whole_text"
@@ -12,6 +13,7 @@ CUSTOM_TERM_COLUMN = "custom_term"
 
 annotated_columns = [
     OBJECT_ID_COLUMN,
+    OBJECT_URI_COLUMN,
     OBJECT_LABEL_COLUMN,
     SUBJECT_LABEL_COLUMN,
     MATCHES_WHOLE_TEXT_COLUMN,

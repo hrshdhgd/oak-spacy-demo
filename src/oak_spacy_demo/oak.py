@@ -9,7 +9,7 @@ import pandas as pd
 from oaklib import get_adapter
 from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
 
-from .constants import annotated_columns
+from .constants import _get_uri_converter, annotated_columns
 
 
 @dataclass
@@ -51,13 +51,15 @@ def _handle_unmatched_terms(
 
 def _write_annotations(annotations: Dict[str, List[TextAnnotation]], columns: List[str], output_file: Path) -> None:
     """Write annotations to TSV file and remove duplicates."""
+    converter = _get_uri_converter()
     with open(output_file, "w", newline="") as f:
         writer = csv.writer(f, delimiter="\t", quoting=csv.QUOTE_NONE)
         writer.writerow(columns)
-
         for responses in annotations.values():
             for response in responses:
                 row = [getattr(response, col, None) for col in columns]
+                # replace None with empty string in row[1]
+                row[1] = row[1] if row[1] else converter.expand(row[0])
                 writer.writerow(row)
 
     # Remove duplicates efficiently using pandas

@@ -2,19 +2,23 @@
 
 import csv
 import json
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
 import spacy
+from curies.api import NoCURIEDelimiterError
 from oaklib import get_adapter
 from scispacy.abbreviation import AbbreviationDetector  # noqa
 from scispacy.linking import EntityLinker  # noqa
 from spacy.language import Language
 from spacy.tokens import Doc
 
-from .constants import annotated_columns
+from .constants import _get_uri_converter, annotated_columns
+
+logger = logging.getLogger(__name__)
 
 
 def get_ontology_cache_filename(resource: str) -> str:
@@ -44,6 +48,7 @@ class AnnotationResult:
     """Container for annotation results."""
 
     label: Optional[str]
+    uri: Optional[str]
     text: Optional[str]
     source_text: str
     exact_match: bool
@@ -97,12 +102,18 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
     """Process entities from spaCy doc."""
     results = []
     exact_match_found = False
+    converter = _get_uri_converter()
 
     for ent in doc.ents:
-        import pdb; pdb.set_trace()
         is_exact = ent.text == source_text
+        try:
+            uri = converter.expand(ent.label_)
+        except NoCURIEDelimiterError as e:
+            uri = ent.label_
+            logger.warning(f"Error expanding URI for {ent.label_}: {e}")
         result = AnnotationResult(
             label=ent.label_,
+            uri=uri,
             text=ent.text,
             source_text=source_text,
             exact_match=is_exact,
@@ -116,7 +127,9 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
     # Handle case with no entities
     if not results:
         results.append(
-            AnnotationResult(label=None, text=None, source_text=source_text, exact_match=False, start=None, end=None)
+            AnnotationResult(
+                label=None, uri=None, text=None, source_text=source_text, exact_match=False, start=None, end=None
+            )
         )
 
     return results, exact_match_found
@@ -127,7 +140,7 @@ def write_results(results: List[AnnotationResult], exact_match: bool, writers: T
     writer_exact, writer_partial = writers
 
     for result in results:
-        row = [result.label, result.text, result.source_text, result.exact_match, result.start, result.end]
+        row = [result.label, result.uri, result.text, result.source_text, result.exact_match, result.start, result.end]
 
         if result.exact_match:
             writer_exact.writerow(row)
