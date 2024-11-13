@@ -8,7 +8,7 @@ import pandas as pd
 from oaklib import get_adapter
 from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, explode, udf
+from pyspark.sql.functions import array, col, explode, udf
 from pyspark.sql.types import ArrayType, StringType, StructField, StructType
 
 

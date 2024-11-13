@@ -47,6 +47,7 @@ class OntologyCache:
     """Handle ontology caching operations."""
 
     def __init__(self, cache_path: Path):
+        """Initialize cache path."""
         self.cache_path = cache_path
 
     def load(self) -> Dict[str, str]:
@@ -80,7 +81,7 @@ def build_ontology(oi) -> Dict[str, str]:
     return {**ontology, **aliases}
 
 def setup_nlp_pipeline(model_name: str, patterns: List[Dict]) -> Language:
-    """Setup spaCy pipeline with entity ruler."""
+    """Entity ruler setup for spaCy pipeline."""
     nlp = spacy.load(AnnotationConfig.MODELS.get(model_name, "sci_sm"))
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     ruler.add_patterns(patterns)
