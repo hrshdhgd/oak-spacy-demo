@@ -1,4 +1,5 @@
 """oak-spacy-demo package."""
+
 import importlib_metadata
 
 try:
