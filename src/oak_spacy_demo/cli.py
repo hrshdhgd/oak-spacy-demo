@@ -60,7 +60,8 @@ def annotate(
 ):
     if input_file:
         if Path(input_file).suffix in [".tsv", ".csv"]:
-            df = pd.read_csv(input_file, sep="\t")
+            separator = "\t" if Path(input_file).suffix == ".tsv" else ","
+            df = pd.read_csv(input_file, sep=separator)
         else:
             raise ValueError("Input file should be a .tsv or .csv file.")
     elif dataframe:
