@@ -98,7 +98,7 @@ def process_text(nlp, text: str) -> List[Dict]:
 
     return results
 
-def annotate_via_pyspark(
+def annotate_via_spacy_spark(
     spark_df: DataFrame,
     column: str,
     resource: str,
