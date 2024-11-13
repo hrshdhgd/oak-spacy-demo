@@ -1,6 +1,7 @@
 """Command line interface for oak-spacy-demo."""
 
 import logging
+import os
 from pathlib import Path
 
 import click
@@ -48,6 +49,7 @@ def main(verbose: int, quiet: bool):
 @click.option("-r", "--resource", type=str)
 @click.option("--cache-dir", type=click.Path(exists=True), required=False)
 @click.option("-l", "--linker", type=click.Choice(SCI_SPACY_LINKERS), default="umls", required=False)
+@click.option("-b", "--batch-size", type=int, default=1000)
 def annotate(
     tool: str,
     input_file: str,
@@ -57,6 +59,7 @@ def annotate(
     cache_dir: str,
     output: str,
     linker: str,
+    batch_size: int,
 ):
     if input_file:
         if Path(input_file).suffix in [".tsv", ".csv"]:
@@ -73,11 +76,20 @@ def annotate(
         output = Path(output)
     else:
         output = Path(f"{column}.tsv")
+
+    n_processes = max(1, os.cpu_count() - 1)
     if tool == "oak":
-        annotate_via_oak(dataframe=df, column=column, resource=resource, outfile=output)
+        annotate_via_oak(dataframe=df, column=column, resource=resource, outfile=output, n_processes=n_processes)
     elif tool == "spacy":
         annotate_via_spacy(
-            dataframe=df, column=column, resource=resource, outfile=output, cache_dir=Path(cache_dir), linker=linker
+            dataframe=df,
+            column=column,
+            resource=resource,
+            outfile=output,
+            cache_dir=Path(cache_dir),
+            linker=linker,
+            n_processes=n_processes,
+            batch_size=batch_size,
         )
     else:
         raise ValueError("Tool should be either 'oak' or 'spacy'.")

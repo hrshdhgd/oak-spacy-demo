@@ -51,6 +51,8 @@ lint.extend-ignore = [
     "D212",  # `multi-line-summary-first-line`
     "D203",  # `blank-line-before-docstring`
     "E712",  # `comparison-to-True`
+    "S112",  # `try`-`except`-`continue` detected, consider logging the exception
+    "E722",  # Do not use bare `except`"
     ]
 line-length = 120
 
