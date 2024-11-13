@@ -1,4 +1,5 @@
 """All constants used in the project are defined here."""
+
 OBJECT_ID_COLUMN = "object_id"
 OBJECT_LABEL_COLUMN = "object_label"
 SUBJECT_LABEL_COLUMN = "subject_label"

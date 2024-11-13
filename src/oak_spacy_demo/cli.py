@@ -64,7 +64,7 @@ def annotate(
     else:
         output = Path(f"{column}.tsv")
     if tool == "oak":
-        annotate_via_oak(dataframe=df, column=column, resource=resource, outfile=output, cache_dir=cache_dir)
+        annotate_via_oak(dataframe=df, column=column, resource=resource, outfile=output)
     elif tool == "spacy":
         annotate_via_spacy(dataframe=df, column=column, resource=resource, outfile=output, cache_dir=cache_dir)
     else:
