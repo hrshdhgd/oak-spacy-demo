@@ -9,6 +9,8 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import spacy
 from oaklib import get_adapter
+from scispacy.abbreviation import AbbreviationDetector  # noqa
+from scispacy.linking import EntityLinker  # noqa
 from spacy.language import Language
 from spacy.tokens import Doc
 
@@ -19,6 +21,7 @@ def get_ontology_cache_filename(resource: str) -> str:
     """Get the ontology cache filename based on the resource file."""
     resource_path = Path(resource)
     return resource_path.stem + "_cache.json"
+
 
 @dataclass
 class AnnotationConfig:
@@ -34,7 +37,6 @@ class AnnotationConfig:
         "bc5cdr_md": "en_ner_bc5cdr_md",
         "bionlp13cg_md": "en_ner_bionlp13cg_md",
     }
-    SCI_SPACY_LINKERS = ["umls", "mesh", "go", "hpo", "rxnorm"]
 
 
 @dataclass
@@ -47,6 +49,7 @@ class AnnotationResult:
     exact_match: bool
     start: Optional[int]
     end: Optional[int]
+
 
 class OntologyCache:
     """Handle ontology caching operations."""
@@ -67,30 +70,27 @@ class OntologyCache:
         with open(self.cache_path, "w") as f:
             json.dump(ontology, f, indent=4)
 
+
 def build_ontology(oi) -> Dict[str, str]:
     """Build ontology dictionary efficiently."""
     # Get base ontology
-    ontology = {
-        oi.label(curie): curie
-        for curie in oi.entities()
-        if oi.label(curie) is not None
-    }
+    ontology = {oi.label(curie): curie for curie in oi.entities() if oi.label(curie) is not None}
 
     # Add aliases efficiently
-    aliases = {
-        term: mondo_id
-        for mondo_id in ontology.values()
-        for term in (oi.entity_aliases(mondo_id) or [])
-    }
+    aliases = {term: mondo_id for mondo_id in ontology.values() for term in (oi.entity_aliases(mondo_id) or [])}
 
     return {**ontology, **aliases}
 
-def setup_nlp_pipeline(model_name: str, patterns: List[Dict]) -> Language:
+
+def setup_nlp_pipeline(model_name: str, patterns: List[Dict], linker: str) -> Language:
     """Entity ruler setup for spaCy pipeline."""
     nlp = spacy.load(AnnotationConfig.MODELS.get(model_name, "sci_sm"))
     ruler = nlp.add_pipe("entity_ruler", before="ner")
+    nlp.add_pipe("abbreviation_detector")
+    nlp.add_pipe("scispacy_linker", config={"resolve_abbreviations": True, "linker_name": linker})
     ruler.add_patterns(patterns)
     return nlp
+
 
 def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult], bool]:
     """Process entities from spaCy doc."""
@@ -105,7 +105,7 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
             source_text=source_text,
             exact_match=is_exact,
             start=ent.start_char,
-            end=ent.end_char
+            end=ent.end_char,
         )
         results.append(result)
         if is_exact:
@@ -113,39 +113,25 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
 
     # Handle case with no entities
     if not results:
-        results.append(AnnotationResult(
-            label=None,
-            text=None,
-            source_text=source_text,
-            exact_match=False,
-            start=None,
-            end=None
-        ))
+        results.append(
+            AnnotationResult(label=None, text=None, source_text=source_text, exact_match=False, start=None, end=None)
+        )
 
     return results, exact_match_found
 
-def write_results(
-    results: List[AnnotationResult],
-    exact_match: bool,
-    writers: Tuple[csv.writer, csv.writer]
-) -> None:
+
+def write_results(results: List[AnnotationResult], exact_match: bool, writers: Tuple[csv.writer, csv.writer]) -> None:
     """Write results to appropriate files."""
     writer_exact, writer_partial = writers
 
     for result in results:
-        row = [
-            result.label,
-            result.text,
-            result.source_text,
-            result.exact_match,
-            result.start,
-            result.end
-        ]
+        row = [result.label, result.text, result.source_text, result.exact_match, result.start, result.end]
 
         if result.exact_match:
             writer_exact.writerow(row)
         else:
             writer_partial.writerow(row)
+
 
 def annotate_via_spacy(
     dataframe: pd.DataFrame,
@@ -154,7 +140,8 @@ def annotate_via_spacy(
     outfile: Path,
     cache_dir: Optional[Path] = None,
     model: str = "sci_sm",
-    batch_size: int = 1000
+    linker: str = "umls",
+    batch_size: int = 1000,
 ) -> None:
     """
     Annotate dataframe column text using optimized spacy implementation.
@@ -175,9 +162,11 @@ def annotate_via_spacy(
 
     # Setup resource
     resource_path = Path(resource)
-    resource = str(resource_path).replace(resource_path.suffix, ".db") \
-               if Path(str(resource_path).replace(resource_path.suffix, ".db")).exists() \
-               else str(resource_path)
+    resource = (
+        str(resource_path).replace(resource_path.suffix, ".db")
+        if Path(str(resource_path).replace(resource_path.suffix, ".db")).exists()
+        else str(resource_path)
+    )
 
     # Initialize ontology
     ontology_cache = OntologyCache(cache_file)
@@ -190,13 +179,10 @@ def annotate_via_spacy(
 
     # Setup spaCy pipeline
     patterns = [{"label": curie, "pattern": label} for label, curie in ontology.items()]
-    nlp = setup_nlp_pipeline(model, patterns)
+    nlp = setup_nlp_pipeline(model_name=model, patterns=patterns, linker=linker)
 
     # Process in batches
-    with (
-        open(outfile, "w", newline="") as f1,
-        open(outfile_unmatched, "w", newline="") as f2
-    ):
+    with open(outfile, "w", newline="") as f1, open(outfile_unmatched, "w", newline="") as f2:
         writer_exact = csv.writer(f1, delimiter="\t", quoting=csv.QUOTE_NONE)
         writer_partial = csv.writer(f2, delimiter="\t", quoting=csv.QUOTE_NONE)
 
@@ -207,7 +193,7 @@ def annotate_via_spacy(
         # Process in batches
         texts = dataframe[column].unique()
         for i in range(0, len(texts), batch_size):
-            batch_texts = texts[i:i + batch_size]
+            batch_texts = texts[i : i + batch_size]
             docs = nlp.pipe(batch_texts)
 
             for doc, text in zip(docs, batch_texts, strict=False):
@@ -218,6 +204,7 @@ def annotate_via_spacy(
     for file in (outfile, outfile_unmatched):
         df = pd.read_csv(file, sep="\t")
         df.drop_duplicates().to_csv(file, index=False, sep="\t")
+
 
 if __name__ == "__main__":
     pass

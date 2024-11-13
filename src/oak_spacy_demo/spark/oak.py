@@ -23,18 +23,22 @@ class AnnotationResult:
     start: int
     end: int
 
+
 def create_spark_session(app_name: str = "OAK Annotator") -> SparkSession:
     """Create and configure Spark session."""
-    return (SparkSession.builder
-            .appName(app_name)
-            .config("spark.driver.memory", "4g")
-            .config("spark.executor.memory", "4g")
-            .config("spark.default.parallelism", "100")
-            .getOrCreate())
+    return (
+        SparkSession.builder.appName(app_name)
+        .config("spark.driver.memory", "4g")
+        .config("spark.executor.memory", "4g")
+        .config("spark.default.parallelism", "100")
+        .getOrCreate()
+    )
+
 
 def _overlap(a: str, b: str) -> int:
     """Get number of characters in 2 strings that overlap using set intersection."""
     return len(set(a) & set(b))
+
 
 def _convert_annotation_to_dict(annotation: TextAnnotation) -> Dict:
     """Convert TextAnnotation object to dictionary for Spark processing."""
@@ -44,31 +48,24 @@ def _convert_annotation_to_dict(annotation: TextAnnotation) -> Dict:
         "match_type": annotation.match_type,
         "match_string": annotation.match_string,
         "start": annotation.start,
-        "end": annotation.end
+        "end": annotation.end,
     }
 
+
 def _annotate_single_term(
-    term: str,
-    adapter: object,
-    config: TextAnnotationConfiguration,
-    exact_match: bool = True
+    term: str, adapter: object, config: TextAnnotationConfiguration, exact_match: bool = True
 ) -> List[Dict]:
     """Annotate a single term and return results as list of dicts."""
     if exact_match:
         annotations = list(adapter.annotate_text(term.replace("_", " "), config))
         return [_convert_annotation_to_dict(ann) for ann in annotations]
     else:
-        annotations = [
-            x for x in adapter.annotate_text(term.replace("_", " "), config)
-            if len(x.object_label) > 2
-        ]
+        annotations = [x for x in adapter.annotate_text(term.replace("_", " "), config) if len(x.object_label) > 2]
         if annotations:
-            max_overlap_ann = max(
-                annotations,
-                key=lambda obj: _overlap(obj.object_label, term)
-            )
+            max_overlap_ann = max(annotations, key=lambda obj: _overlap(obj.object_label, term))
             return [_convert_annotation_to_dict(max_overlap_ann)]
         return []
+
 
 def annotate_via_oak_spark(
     input_df: pd.DataFrame,
@@ -108,14 +105,18 @@ def annotate_via_oak_spark(
     )
 
     # Define schema for annotation results
-    annotation_schema = ArrayType(StructType([
-        StructField("object_id", StringType(), True),
-        StructField("object_label", StringType(), True),
-        StructField("match_type", StringType(), True),
-        StructField("match_string", StringType(), True),
-        StructField("start", StringType(), True),
-        StructField("end", StringType(), True)
-    ]))
+    annotation_schema = ArrayType(
+        StructType(
+            [
+                StructField("object_id", StringType(), True),
+                StructField("object_label", StringType(), True),
+                StructField("match_type", StringType(), True),
+                StructField("match_string", StringType(), True),
+                StructField("start", StringType(), True),
+                StructField("end", StringType(), True),
+            ]
+        )
+    )
 
     # Create UDF for exact matching
     @udf(annotation_schema)
@@ -132,8 +133,8 @@ def annotate_via_oak_spark(
         return []
 
     # Process exact matches
-    exact_matches = (spark_df
-        .select(col(column))
+    exact_matches = (
+        spark_df.select(col(column))
         .distinct()
         .withColumn("annotations", annotate_exact(col(column)))
         .filter(col("annotations").isNotNull() & (col("annotations") != array()))
@@ -141,8 +142,8 @@ def annotate_via_oak_spark(
     )
 
     # Process unmatched terms for partial matching
-    unmatched_terms = (spark_df
-        .select(col(column))
+    unmatched_terms = (
+        spark_df.select(col(column))
         .distinct()
         .withColumn("annotations", annotate_exact(col(column)))
         .filter(col("annotations").isNull() | (col("annotations") == array()))
@@ -158,6 +159,7 @@ def annotate_via_oak_spark(
 
     # Clean up
     spark.stop()
+
 
 if __name__ == "__main__":
     pass

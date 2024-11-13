@@ -19,50 +19,37 @@ class AnnotationResult:
     matched: Dict[str, List[TextAnnotation]]
     unmatched: Dict[str, List[TextAnnotation]]
 
+
 def _overlap(a: str, b: str) -> int:
     """Get number of characters in 2 strings that overlap using set intersection."""
     return len(set(a) & set(b))
 
+
 def _annotate_terms(
-    terms: pd.Series,
-    adapter: object,
-    config: TextAnnotationConfiguration
+    terms: pd.Series, adapter: object, config: TextAnnotationConfiguration
 ) -> Dict[str, List[TextAnnotation]]:
     """Batch annotate terms using provided configuration."""
-    return {
-        term: list(adapter.annotate_text(term.replace("_", " "), config))
-        for term in terms.unique()
-    }
+    return {term: list(adapter.annotate_text(term.replace("_", " "), config)) for term in terms.unique()}
+
 
 def _handle_unmatched_terms(
-    unmatched_terms: Dict[str, List],
-    adapter: object,
-    config: TextAnnotationConfiguration
+    unmatched_terms: Dict[str, List], adapter: object, config: TextAnnotationConfiguration
 ) -> Dict[str, List[TextAnnotation]]:
     """Process unmatched terms with relaxed matching criteria."""
     results = {}
     config.matches_whole_text = False
 
     for term in unmatched_terms:
-        annotations = [
-            x for x in adapter.annotate_text(term.replace("_", " "), config)
-            if len(x.object_label) > 2
-        ]
+        annotations = [x for x in adapter.annotate_text(term.replace("_", " "), config) if len(x.object_label) > 2]
         if annotations:
             # Find annotation with maximum overlap
-            max_overlap_annotation = max(
-                annotations,
-                key=lambda obj: _overlap(obj.object_label, term)
-            )
+            max_overlap_annotation = max(annotations, key=lambda obj: _overlap(obj.object_label, term))
             results[term] = [max_overlap_annotation]
 
     return results
 
-def _write_annotations(
-    annotations: Dict[str, List[TextAnnotation]],
-    columns: List[str],
-    output_file: Path
-) -> None:
+
+def _write_annotations(annotations: Dict[str, List[TextAnnotation]], columns: List[str], output_file: Path) -> None:
     """Write annotations to TSV file and remove duplicates."""
     with open(output_file, "w", newline="") as f:
         writer = csv.writer(f, delimiter="\t", quoting=csv.QUOTE_NONE)
@@ -76,6 +63,7 @@ def _write_annotations(
     # Remove duplicates efficiently using pandas
     df = pd.read_csv(output_file, sep="\t")
     df.drop_duplicates().to_csv(output_file, index=False, sep="\t")
+
 
 def annotate_via_oak(
     dataframe: pd.DataFrame,
@@ -122,6 +110,7 @@ def annotate_via_oak(
     unmatched_outfile = outfile.with_name(f"{outfile.stem}_unmatched{outfile.suffix}")
     _write_annotations(exact_matches, annotated_columns, outfile)
     _write_annotations(partial_matches, annotated_columns, unmatched_outfile)
+
 
 if __name__ == "__main__":
     pass

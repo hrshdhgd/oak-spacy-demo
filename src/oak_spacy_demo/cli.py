@@ -7,6 +7,7 @@ import click
 import pandas as pd
 
 from oak_spacy_demo import __version__
+from oak_spacy_demo.constants import SCI_SPACY_LINKERS
 from oak_spacy_demo.oak import annotate_via_oak
 from oak_spacy_demo.spacy import annotate_via_spacy
 
@@ -46,8 +47,16 @@ def main(verbose: int, quiet: bool):
 @click.option("-o", "--output", type=str)
 @click.option("-r", "--resource", type=str)
 @click.option("--cache-dir", type=click.Path(exists=True), required=False)
+@click.option("-l", "--linker", type=click.Choice(SCI_SPACY_LINKERS), default="umls", required=False)
 def annotate(
-    tool: str, input_file: str, dataframe: pd.DataFrame, column: str, resource: str, cache_dir: str, output: str
+    tool: str,
+    input_file: str,
+    dataframe: pd.DataFrame,
+    column: str,
+    resource: str,
+    cache_dir: str,
+    output: str,
+    linker: str,
 ):
     if input_file:
         if Path(input_file).suffix in [".tsv", ".csv"]:
@@ -66,7 +75,9 @@ def annotate(
     if tool == "oak":
         annotate_via_oak(dataframe=df, column=column, resource=resource, outfile=output)
     elif tool == "spacy":
-        annotate_via_spacy(dataframe=df, column=column, resource=resource, outfile=output, cache_dir=cache_dir)
+        annotate_via_spacy(
+            dataframe=df, column=column, resource=resource, outfile=output, cache_dir=cache_dir, linker=linker
+        )
     else:
         raise ValueError("Tool should be either 'oak' or 'spacy'.")
 

@@ -1,4 +1,5 @@
 """PySpark wrapper for spaCy NLP pipeline."""
+
 import json
 from dataclasses import dataclass
 from pathlib import Path
@@ -16,6 +17,7 @@ def get_ontology_cache_filename(resource: str) -> str:
     resource_path = Path(resource)
     return resource_path.stem + "_cache.json"
 
+
 @dataclass
 class AnnotationConfig:
     """Configuration for annotation process."""
@@ -31,6 +33,7 @@ class AnnotationConfig:
         "bionlp13cg_md": "en_ner_bionlp13cg_md",
     }
     SCI_SPACY_LINKERS = ["umls", "mesh", "go", "hpo", "rxnorm"]
+
 
 class OntologyCache:
     """Handle ontology caching operations."""
@@ -51,21 +54,15 @@ class OntologyCache:
         with open(self.cache_path, "w") as f:
             json.dump(ontology, f, indent=4)
 
+
 def build_ontology(oi) -> Dict[str, str]:
     """Build ontology dictionary efficiently."""
-    ontology = {
-        oi.label(curie): curie
-        for curie in oi.entities()
-        if oi.label(curie) is not None
-    }
+    ontology = {oi.label(curie): curie for curie in oi.entities() if oi.label(curie) is not None}
 
-    aliases = {
-        term: mondo_id
-        for mondo_id in ontology.values()
-        for term in (oi.entity_aliases(mondo_id) or [])
-    }
+    aliases = {term: mondo_id for mondo_id in ontology.values() for term in (oi.entity_aliases(mondo_id) or [])}
 
     return {**ontology, **aliases}
+
 
 def setup_nlp_pipeline(model_name: str, patterns: List[Dict]) -> spacy.language.Language:
     """Set up spaCy pipeline with entity ruler."""
@@ -73,6 +70,7 @@ def setup_nlp_pipeline(model_name: str, patterns: List[Dict]) -> spacy.language.
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     ruler.add_patterns(patterns)
     return nlp
+
 
 def process_text(nlp, text: str) -> List[Dict]:
     """Process single text and return list of annotations."""
@@ -86,21 +84,17 @@ def process_text(nlp, text: str) -> List[Dict]:
             "source_text": text,
             "exact_match": ent.text == text,
             "start": ent.start_char,
-            "end": ent.end_char
+            "end": ent.end_char,
         }
         results.append(result)
 
     if not results:
-        results.append({
-            "label": None,
-            "text": None,
-            "source_text": text,
-            "exact_match": False,
-            "start": None,
-            "end": None
-        })
+        results.append(
+            {"label": None, "text": None, "source_text": text, "exact_match": False, "start": None, "end": None}
+        )
 
     return results
+
 
 def annotate_via_spacy_spark(
     spark_df: DataFrame,
@@ -109,7 +103,7 @@ def annotate_via_spacy_spark(
     outfile: Path,
     cache_dir: Optional[Path] = None,
     model: str = "sci_sm",
-    num_partitions: int = None
+    num_partitions: int = None,
 ) -> None:
     """
     Annotate dataframe column text using PySpark for distributed processing.
@@ -130,9 +124,11 @@ def annotate_via_spacy_spark(
 
     # Setup resource path
     resource_path = Path(resource)
-    resource = str(resource_path).replace(resource_path.suffix, ".db") \
-               if Path(str(resource_path).replace(resource_path.suffix, ".db")).exists() \
-               else str(resource_path)
+    resource = (
+        str(resource_path).replace(resource_path.suffix, ".db")
+        if Path(str(resource_path).replace(resource_path.suffix, ".db")).exists()
+        else str(resource_path)
+    )
 
     # Initialize ontology
     ontology_cache = OntologyCache(cache_file)
@@ -148,14 +144,18 @@ def annotate_via_spacy_spark(
     nlp = setup_nlp_pipeline(model, patterns)
 
     # Define schema for the annotation results
-    annotation_schema = ArrayType(StructType([
-        StructField("label", StringType(), True),
-        StructField("text", StringType(), True),
-        StructField("source_text", StringType(), True),
-        StructField("exact_match", BooleanType(), True),
-        StructField("start", IntegerType(), True),
-        StructField("end", IntegerType(), True)
-    ]))
+    annotation_schema = ArrayType(
+        StructType(
+            [
+                StructField("label", StringType(), True),
+                StructField("text", StringType(), True),
+                StructField("source_text", StringType(), True),
+                StructField("exact_match", BooleanType(), True),
+                StructField("start", IntegerType(), True),
+                StructField("end", IntegerType(), True),
+            ]
+        )
+    )
 
     # Create UDF for processing
     process_text_udf = udf(lambda text: process_text(nlp, text), annotation_schema)
@@ -165,15 +165,13 @@ def annotate_via_spacy_spark(
         spark_df = spark_df.repartition(num_partitions)
 
     # Apply the UDF and explode the results
-    results_df = spark_df.select(
-        explode(process_text_udf(col(column))).alias("annotation")
-    ).select(
+    results_df = spark_df.select(explode(process_text_udf(col(column))).alias("annotation")).select(
         col("annotation.label"),
         col("annotation.text"),
         col("annotation.source_text"),
         col("annotation.exact_match"),
         col("annotation.start"),
-        col("annotation.end")
+        col("annotation.end"),
     )
 
     # Split and save results
@@ -181,23 +179,15 @@ def annotate_via_spacy_spark(
     partial_matches = results_df.filter(col("exact_match") == False)
 
     # Save results with deduplication
-    exact_matches.dropDuplicates().write.csv(
-        str(outfile),
-        sep="\t",
-        header=True,
-        mode="overwrite"
-    )
+    exact_matches.dropDuplicates().write.csv(str(outfile), sep="\t", header=True, mode="overwrite")
 
-    partial_matches.dropDuplicates().write.csv(
-        str(outfile_unmatched),
-        sep="\t",
-        header=True,
-        mode="overwrite"
-    )
+    partial_matches.dropDuplicates().write.csv(str(outfile_unmatched), sep="\t", header=True, mode="overwrite")
+
 
 if __name__ == "__main__":
-    spark = SparkSession.builder \
-        .appName("TextAnnotation") \
-        .config("spark.driver.memory", "4g") \
-        .config("spark.executor.memory", "4g") \
+    spark = (
+        SparkSession.builder.appName("TextAnnotation")
+        .config("spark.driver.memory", "4g")
+        .config("spark.executor.memory", "4g")
         .getOrCreate()
+    )
