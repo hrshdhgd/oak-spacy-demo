@@ -1,106 +1,127 @@
-"""Main python file."""
+"""Main python file with optimized text annotation functionality."""
 
 import csv
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Dict, List
 
 import pandas as pd
 from oaklib import get_adapter
-from oaklib.datamodels.text_annotator import TextAnnotationConfiguration
+from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
 
 from .constants import annotated_columns
 
 
-def _overlap(a, b):
-    """Get number of characters in 2 strings that overlap."""
+@dataclass
+class AnnotationResult:
+    """Container for annotation results to improve code readability."""
+
+    matched: Dict[str, List[TextAnnotation]]
+    unmatched: Dict[str, List[TextAnnotation]]
+
+def _overlap(a: str, b: str) -> int:
+    """Get number of characters in 2 strings that overlap using set intersection."""
     return len(set(a) & set(b))
 
+def _annotate_terms(
+    terms: pd.Series,
+    adapter: object,
+    config: TextAnnotationConfiguration
+) -> Dict[str, List[TextAnnotation]]:
+    """Batch annotate terms using provided configuration."""
+    return {
+        term: list(adapter.annotate_text(term.replace("_", " "), config))
+        for term in terms.unique()
+    }
+
+def _handle_unmatched_terms(
+    unmatched_terms: Dict[str, List],
+    adapter: object,
+    config: TextAnnotationConfiguration
+) -> Dict[str, List[TextAnnotation]]:
+    """Process unmatched terms with relaxed matching criteria."""
+    results = {}
+    config.matches_whole_text = False
+
+    for term in unmatched_terms:
+        annotations = [
+            x for x in adapter.annotate_text(term.replace("_", " "), config)
+            if len(x.object_label) > 2
+        ]
+        if annotations:
+            # Find annotation with maximum overlap
+            max_overlap_annotation = max(
+                annotations,
+                key=lambda obj: _overlap(obj.object_label, term)
+            )
+            results[term] = [max_overlap_annotation]
+
+    return results
+
+def _write_annotations(
+    annotations: Dict[str, List[TextAnnotation]],
+    columns: List[str],
+    output_file: Path
+) -> None:
+    """Write annotations to TSV file and remove duplicates."""
+    with open(output_file, "w", newline="") as f:
+        writer = csv.writer(f, delimiter="\t", quoting=csv.QUOTE_NONE)
+        writer.writerow(columns)
+
+        for responses in annotations.values():
+            for response in responses:
+                row = [getattr(response, col, None) for col in columns]
+                writer.writerow(row)
+
+    # Remove duplicates efficiently using pandas
+    df = pd.read_csv(output_file, sep="\t")
+    df.drop_duplicates().to_csv(output_file, index=False, sep="\t")
 
 def annotate_via_oak(
     dataframe: pd.DataFrame,
     column: str,
     resource: str,
     outfile: Path,
-):
+) -> None:
     """
-    Annotate dataframe column text using oaklib + llm.
+    Annotate dataframe column text using oaklib + llm with improved efficiency.
+
+    Each row in the column is treated as a complete term.
 
     :param dataframe: Input DataFrame
-    :param column: Column to be annotated.
-    :param resource: ontology resource file path.
-    :param outfile: Output file path.
+    :param column: Column to be annotated
+    :param resource: Ontology resource file path
+    :param outfile: Output file path
+
     """
-    outfile_for_unmatched = outfile.with_name(outfile.stem + "_unmatched" + outfile.suffix)
+    # Setup resource path
     resource_path = Path(resource)
-    resource_path_db = resource.replace(resource_path.suffix, ".db")
-    if Path(resource_path_db).exists():
-        resource = resource_path_db
+    db_path = resource.replace(resource_path.suffix, ".db")
+    resource = db_path if Path(db_path).exists() else resource
 
-    oi = get_adapter(f"sqlite:{resource}")
-
-    configuration = TextAnnotationConfiguration(
+    # Initialize adapter and configuration
+    adapter = get_adapter(f"sqlite:{resource}")
+    config = TextAnnotationConfiguration(
         include_aliases=True,
         matches_whole_text=True,
     )
 
-    unique_terms_set = {
-        item.strip() for sublist in dataframe[column].drop_duplicates().to_list() for item in sublist.split(", ")
-    }
+    # First pass annotation with exact matching
+    annotated_terms = _annotate_terms(dataframe[column], adapter, config)
 
-    unique_terms_annotated = {
-        term: list(oi.annotate_text(term.replace("_", " "), configuration)) for term in unique_terms_set
-    }
-    terms_not_annotated = {k: v for k, v in unique_terms_annotated.items() if v == []}
-    # The annotations upto this point is matches_whole_text = True.
-    # There are still some terms that aren't annotated.
-    # For those we flip matches_whole_text = False and then rerun.
-    if len(terms_not_annotated) > 0:
-        configuration.matches_whole_text = False
-        unique_terms_not_annotated_set = set(terms_not_annotated.keys())
-        unique_terms_annotated_not_whole_match = {
-            term: [x for x in oi.annotate_text(term.replace("_", " "), configuration) if len(x.object_label) > 2]
-            for term in unique_terms_not_annotated_set
-        }
+    # Separate exact matches and unmatched terms
+    exact_matches = {k: v for k, v in annotated_terms.items() if v}
+    unmatched_terms = {k: v for k, v in annotated_terms.items() if not v}
 
-        # Initialize an empty dictionary
-        max_overlap_dict = {}
+    # Process unmatched terms separately
+    partial_matches = {}
+    if unmatched_terms:
+        partial_matches = _handle_unmatched_terms(unmatched_terms, adapter, config)
 
-        # Iterate over items in the original dictionary
-        for k, v in unique_terms_annotated_not_whole_match.items():
-            # Find the max value using the overlap function and assign it to the new dictionary
-            if v != []:
-                max_overlap_dict[k] = [max(v, key=lambda obj: _overlap(obj.object_label, k))]
-        # Now new_dict is equivalent to unique_terms_annotated_not_whole_match in the original code
-        unique_terms_annotated_not_whole_match = max_overlap_dict
-
-    with (
-        open(str(outfile), "w", newline="") as file_1,
-        open(str(outfile_for_unmatched), "w", newline="") as file_2,
-    ):
-        writer_1 = csv.writer(file_1, delimiter="\t", quoting=csv.QUOTE_NONE)
-        writer_2 = csv.writer(file_2, delimiter="\t", quoting=csv.QUOTE_NONE)
-        writer_1.writerow(annotated_columns)
-        writer_2.writerow(annotated_columns)
-
-        for row in dataframe.iterrows():
-            row = row[1]
-            term = row[column]
-            responses = unique_terms_annotated.get(term, None)
-            if responses:
-                writer = writer_1
-            else:
-                responses = unique_terms_annotated_not_whole_match.get(term, None)
-                writer = writer_2
-
-            if responses:
-                for response in responses:
-                    response_dict = response.__dict__
-
-                    # Ensure the order of columns matches the header
-                    row_to_write = [response_dict.get(col) for col in annotated_columns]
-                    writer.writerow(row_to_write)
-    pd.read_csv(outfile, sep="\t").drop_duplicates().to_csv(outfile, index=False, sep="\t")
-    pd.read_csv(outfile_for_unmatched, sep="\t").drop_duplicates().to_csv(outfile_for_unmatched, index=False, sep="\t")
-
+    # Write results to separate files
+    unmatched_outfile = outfile.with_name(f"{outfile.stem}_unmatched{outfile.suffix}")
+    _write_annotations(exact_matches, annotated_columns, outfile)
+    _write_annotations(partial_matches, annotated_columns, unmatched_outfile)
 
 if __name__ == "__main__":
     pass
