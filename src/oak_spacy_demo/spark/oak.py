@@ -79,11 +79,10 @@ def annotate_via_oak_spark(
     """
     Annotate dataframe column text using oaklib + llm with PySpark for distributed processing.
 
-    Args:
-        input_df: Input pandas DataFrame
-        column: Column to be annotated
-        resource: Ontology resource file path
-        outfile: Output file path
+    :param input_df: Input pandas DataFrame
+    :param column: Column to be annotated
+    :param resource: Ontology resource file path
+    :param outfile: Output file path
 
     """
     # Initialize Spark

@@ -18,7 +18,7 @@ from .constants import annotated_columns
 def get_ontology_cache_filename(resource: str) -> str:
     """Get the ontology cache filename based on the resource file."""
     resource_path = Path(resource)
-    return resource_path.stem + ".json"
+    return resource_path.stem + "_cache.json"
 
 @dataclass
 class AnnotationConfig:
@@ -159,14 +159,13 @@ def annotate_via_spacy(
     """
     Annotate dataframe column text using optimized spacy implementation.
 
-    Args:
-        dataframe: Input DataFrame
-        column: Column to be annotated
-        resource: Ontology resource file path
-        outfile: Output file path
-        cache_dir: Directory for cache files
-        model: SciSpacy model to use
-        batch_size: Number of texts to process in each batch
+    :param dataframe: Input DataFrame
+    :param column: Column to be annotated
+    :param resource: Ontology resource file path
+    :param outfile: Output file path
+    :param cache_dir: Directory for cache files
+    :param model: SciSpacy model to use
+    :param batch_size: Number of texts to process in each batch
 
     """
     # Setup paths
