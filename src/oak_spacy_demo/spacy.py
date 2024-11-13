@@ -87,7 +87,8 @@ def setup_nlp_pipeline(model_name: str, patterns: List[Dict], linker: str) -> La
     nlp = spacy.load(AnnotationConfig.MODELS.get(model_name, "sci_sm"))
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     nlp.add_pipe("abbreviation_detector")
-    nlp.add_pipe("scispacy_linker", config={"resolve_abbreviations": True, "linker_name": linker})
+    #! Linker not needed as of now.
+    # nlp.add_pipe("scispacy_linker", config={"resolve_abbreviations": True, "linker_name": linker})
     ruler.add_patterns(patterns)
     return nlp
 
@@ -98,6 +99,7 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
     exact_match_found = False
 
     for ent in doc.ents:
+        import pdb; pdb.set_trace()
         is_exact = ent.text == source_text
         result = AnnotationResult(
             label=ent.label_,

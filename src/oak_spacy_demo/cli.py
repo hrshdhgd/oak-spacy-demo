@@ -76,7 +76,7 @@ def annotate(
         annotate_via_oak(dataframe=df, column=column, resource=resource, outfile=output)
     elif tool == "spacy":
         annotate_via_spacy(
-            dataframe=df, column=column, resource=resource, outfile=output, cache_dir=cache_dir, linker=linker
+            dataframe=df, column=column, resource=resource, outfile=output, cache_dir=Path(cache_dir), linker=linker
         )
     else:
         raise ValueError("Tool should be either 'oak' or 'spacy'.")
