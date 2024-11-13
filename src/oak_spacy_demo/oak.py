@@ -44,8 +44,10 @@ def _handle_unmatched_terms(
         if annotations:
             # Find annotation with maximum overlap
             max_overlap_annotation = max(annotations, key=lambda obj: _overlap(obj.object_label, term))
+            max_overlap_annotation.subject_label = (
+                term if not max_overlap_annotation.subject_label else max_overlap_annotation.subject_label
+            )
             results[term] = [max_overlap_annotation]
-
     return results
 
 
