@@ -603,23 +603,6 @@ type = "url"
 url = "https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_sm-0.5.4.tar.gz"
 
 [[package]]
-name = "en_ner_bc5cdr_md"
-version = "0.5.4"
-description = "Spacy Models for Biomedical Text."
-optional = false
-python-versions = "*"
-files = [
-    {file = "en_ner_bc5cdr_md-0.5.4.tar.gz", hash = "sha256:ffc73130a710edf851206199720cb2c744a043e032f5da6ba4bb36863deca778"},
-]
-
-[package.dependencies]
-spacy = ">=3.7.4,<3.8.0"
-
-[package.source]
-type = "url"
-url = "https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_bc5cdr_md-0.5.4.tar.gz"
-
-[[package]]
 name = "et-xmlfile"
 version = "2.0.0"
 description = "An implementation of lxml.xmlfile for the standard library"
@@ -4523,4 +4506,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "87dcc0d1dab6974fc14a8bff79ffb1f5126326ad8f3350dbb36f830b47dc9d59"
+content-hash = "f65f38fb1a67d3b0450d95b84c466a5ad5226a17f5a536c1154863331dbe5cb7"
