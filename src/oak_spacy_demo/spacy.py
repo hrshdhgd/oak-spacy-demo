@@ -5,14 +5,16 @@ import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Iterator
+import multiprocessing as mp
+from functools import partial
 
 import pandas as pd
+from oak_spacy_demo.spark.spacy import build_ontology, get_ontology_cache_filename
 import spacy
 from curies.api import NoCURIEDelimiterError
 from oaklib import get_adapter
-from scispacy.abbreviation import AbbreviationDetector  # noqa
-from scispacy.linking import EntityLinker  # noqa
+from scispacy.abbreviation import AbbreviationDetector
 from spacy.language import Language
 from spacy.tokens import Doc
 
@@ -20,17 +22,9 @@ from .constants import _get_uri_converter, annotated_columns
 
 logger = logging.getLogger(__name__)
 
-
-def get_ontology_cache_filename(resource: str) -> str:
-    """Get the ontology cache filename based on the resource file."""
-    resource_path = Path(resource)
-    return resource_path.stem + "_cache.json"
-
-
+# Existing dataclasses and helper classes remain the same
 @dataclass
 class AnnotationConfig:
-    """Configuration for annotation process."""
-
     MODELS = {
         "sci_sm": "en_core_sci_sm",
         "sci_md": "en_core_sci_md",
@@ -42,11 +36,8 @@ class AnnotationConfig:
         "bionlp13cg_md": "en_ner_bionlp13cg_md",
     }
 
-
 @dataclass
 class AnnotationResult:
-    """Container for annotation results."""
-
     label: Optional[str]
     uri: Optional[str]
     text: Optional[str]
@@ -55,48 +46,35 @@ class AnnotationResult:
     start: Optional[int]
     end: Optional[int]
 
-
 class OntologyCache:
-    """Handle ontology caching operations."""
-
     def __init__(self, cache_path: Path):
-        """Initialize cache path."""
         self.cache_path = cache_path
 
     def load(self) -> Dict[str, str]:
-        """Load ontology from cache if exists."""
         if self.cache_path.exists():
             with open(self.cache_path, "r") as f:
                 return json.load(f)
         return {}
 
     def save(self, ontology: Dict[str, str]) -> None:
-        """Save ontology to cache."""
         with open(self.cache_path, "w") as f:
             json.dump(ontology, f, indent=4)
-
-
-def build_ontology(oi) -> Dict[str, str]:
-    """Build ontology dictionary efficiently."""
-    # Get base ontology
-    ontology = {oi.label(curie): curie for curie in oi.entities() if oi.label(curie) is not None}
-
-    # Add aliases efficiently
-    aliases = {term: mondo_id for mondo_id in ontology.values() for term in (oi.entity_aliases(mondo_id) or [])}
-
-    return {**ontology, **aliases}
-
 
 def setup_nlp_pipeline(model_name: str, patterns: List[Dict], linker: str) -> Language:
     """Entity ruler setup for spaCy pipeline."""
     nlp = spacy.load(AnnotationConfig.MODELS.get(model_name, "sci_sm"))
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     nlp.add_pipe("abbreviation_detector")
-    #! Linker not needed as of now.
-    # nlp.add_pipe("scispacy_linker", config={"resolve_abbreviations": True, "linker_name": linker})
     ruler.add_patterns(patterns)
     return nlp
 
+def process_batch(texts: List[str], nlp: Language) -> List[Tuple[List[AnnotationResult], bool]]:
+    """Process a batch of texts and return results."""
+    results = []
+    for doc, text in zip(nlp.pipe(texts), texts):
+        batch_results = process_entities(doc, text)
+        results.append(batch_results)
+    return results
 
 def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult], bool]:
     """Process entities from spaCy doc."""
@@ -111,6 +89,7 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
         except NoCURIEDelimiterError as e:
             uri = ent.label_
             logger.warning(f"Error expanding URI for {ent.label_}: {e}")
+        
         result = AnnotationResult(
             label=ent.label_,
             uri=uri,
@@ -124,29 +103,47 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
         if is_exact:
             exact_match_found = True
 
-    # Handle case with no entities
     if not results:
         results.append(
             AnnotationResult(
-                label=None, uri=None, text=None, source_text=source_text, exact_match=False, start=None, end=None
+                label=None, uri=None, text=None, source_text=source_text,
+                exact_match=False, start=None, end=None
             )
         )
 
     return results, exact_match_found
 
+def write_results_batch(results_batch: List[Tuple[List[AnnotationResult], bool]], 
+                       queue: mp.Queue) -> None:
+    """Write batch results to queue for processing."""
+    for results, exact_match in results_batch:
+        for result in results:
+            row = [result.label, result.uri, result.text, result.source_text, 
+                  result.exact_match, result.start, result.end]
+            queue.put((result.exact_match, row))
 
-def write_results(results: List[AnnotationResult], exact_match: bool, writers: Tuple[csv.writer, csv.writer]) -> None:
-    """Write results to appropriate files."""
-    writer_exact, writer_partial = writers
+def writer_process(queue: mp.Queue, outfile: Path, 
+                  outfile_unmatched: Path, done_event: mp.Event) -> None:
+    """Process that handles writing results to files."""
+    with open(outfile, "w", newline="") as f1, \
+         open(outfile_unmatched, "w", newline="") as f2:
+        
+        writer_exact = csv.writer(f1, delimiter="\t", quoting=csv.QUOTE_NONE)
+        writer_partial = csv.writer(f2, delimiter="\t", quoting=csv.QUOTE_NONE)
 
-    for result in results:
-        row = [result.label, result.uri, result.text, result.source_text, result.exact_match, result.start, result.end]
+        # Write headers
+        for writer in (writer_exact, writer_partial):
+            writer.writerow(annotated_columns)
 
-        if result.exact_match:
-            writer_exact.writerow(row)
-        else:
-            writer_partial.writerow(row)
-
+        while not (done_event.is_set() and queue.empty()):
+            try:
+                is_exact, row = queue.get(timeout=1)
+                if is_exact:
+                    writer_exact.writerow(row)
+                else:
+                    writer_partial.writerow(row)
+            except:
+                continue
 
 def annotate_via_spacy(
     dataframe: pd.DataFrame,
@@ -157,20 +154,24 @@ def annotate_via_spacy(
     model: str = "sci_sm",
     linker: str = "umls",
     batch_size: int = 1000,
+    n_processes: int = None
 ) -> None:
     """
-    Annotate dataframe column text using optimized spacy implementation.
+    Multiprocessing-enabled annotation of dataframe column text using spacy.
 
-    :param dataframe: Input DataFrame
-    :param column: Column to be annotated
-    :param resource: Ontology resource file path
-    :param outfile: Output file path
-    :param cache_dir: Directory for cache files
-    :param model: SciSpacy model to use
-    :param batch_size: Number of texts to process in each batch
-
+    Args:
+        dataframe: Input DataFrame
+        column: Column to be annotated
+        resource: Ontology resource file path
+        outfile: Output file path
+        cache_dir: Directory for cache files
+        model: SciSpacy model to use
+        batch_size: Number of texts to process in each batch
+        n_processes: Number of processes to use (defaults to CPU count - 1)
     """
-    # Setup paths
+    if n_processes is None:
+        n_processes = max(1, mp.cpu_count() - 1)
+
     cache_dir = cache_dir or Path.cwd()
     cache_file = cache_dir / get_ontology_cache_filename(resource)
     outfile_unmatched = outfile.with_name(f"{outfile.stem}_unmatched{outfile.suffix}")
@@ -192,34 +193,44 @@ def annotate_via_spacy(
         ontology = build_ontology(oi)
         ontology_cache.save(ontology)
 
-    # Setup spaCy pipeline
+    # Setup patterns and create shared nlp pipeline
     patterns = [{"label": curie, "pattern": label} for label, curie in ontology.items()]
     nlp = setup_nlp_pipeline(model_name=model, patterns=patterns, linker=linker)
 
-    # Process in batches
-    with open(outfile, "w", newline="") as f1, open(outfile_unmatched, "w", newline="") as f2:
-        writer_exact = csv.writer(f1, delimiter="\t", quoting=csv.QUOTE_NONE)
-        writer_partial = csv.writer(f2, delimiter="\t", quoting=csv.QUOTE_NONE)
+    # Setup multiprocessing components
+    mp.set_start_method('spawn', force=True)
+    queue = mp.Queue()
+    done_event = mp.Event()
 
-        # Write headers
-        for writer in (writer_exact, writer_partial):
-            writer.writerow(annotated_columns)
+    # Start writer process
+    writer_proc = mp.Process(
+        target=writer_process,
+        args=(queue, outfile, outfile_unmatched, done_event)
+    )
+    writer_proc.start()
 
-        # Process in batches
-        texts = dataframe[column].unique()
-        for i in range(0, len(texts), batch_size):
-            batch_texts = texts[i : i + batch_size]
-            docs = nlp.pipe(batch_texts)
+    # Process texts in parallel
+    texts = dataframe[column].unique()
+    text_batches = [
+        texts[i:i + batch_size] 
+        for i in range(0, len(texts), batch_size)
+    ]
 
-            for doc, text in zip(docs, batch_texts, strict=False):
-                results, exact_match = process_entities(doc, text)
-                write_results(results, exact_match, (writer_exact, writer_partial))
+    with mp.Pool(processes=n_processes) as pool:
+        process_batch_partial = partial(process_batch, nlp=nlp)
+        
+        # Process batches and write results
+        for results_batch in pool.imap(process_batch_partial, text_batches):
+            write_results_batch(results_batch, queue)
+
+    # Signal completion and wait for writer to finish
+    done_event.set()
+    writer_proc.join()
 
     # Remove duplicates efficiently
     for file in (outfile, outfile_unmatched):
         df = pd.read_csv(file, sep="\t")
         df.drop_duplicates().to_csv(file, index=False, sep="\t")
-
 
 if __name__ == "__main__":
     pass
