@@ -16,8 +16,6 @@ from oaklib import get_adapter
 from spacy.language import Language
 from spacy.tokens import Doc
 
-from oak_spacy_demo.spark.spacy import build_ontology, get_ontology_cache_filename
-
 from .constants import _get_uri_converter, annotated_columns
 
 logger = logging.getLogger(__name__)
@@ -163,6 +161,21 @@ def writer_process(queue: mp.Queue, outfile: Path, outfile_unmatched: Path, done
                     writer_partial.writerow(row)
             except:
                 continue
+
+
+def build_ontology(oi) -> Dict[str, str]:
+    """Build ontology dictionary efficiently."""
+    ontology = {oi.label(curie): curie for curie in oi.entities() if oi.label(curie) is not None}
+
+    aliases = {term: mondo_id for mondo_id in ontology.values() for term in (oi.entity_aliases(mondo_id) or [])}
+
+    return {**ontology, **aliases}
+
+
+def get_ontology_cache_filename(resource: str) -> str:
+    """Get the ontology cache filename based on the resource file."""
+    resource_path = Path(resource)
+    return resource_path.stem + "_cache.json"
 
 
 def annotate_via_spacy(
