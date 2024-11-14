@@ -99,22 +99,19 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
         is_exact = ent.text == source_text
         try:
             uri = converter.expand(ent.label_)
+            result = AnnotationResult(
+                label=ent.label_,
+                uri=uri,
+                text=ent.text,
+                source_text=source_text,
+                exact_match=is_exact,
+                start=ent.start_char,
+                end=ent.end_char,
+            )
+            results.append(result)
         except NoCURIEDelimiterError as e:
-            uri = ent.label_
-            # logger.warning(f"Error expanding URI for {ent.label_}: {e}")
+            logger.warning(f"Error expanding URI for {ent.label_}: {e}")
 
-        result = AnnotationResult(
-            label=ent.label_,
-            uri=uri,
-            text=ent.text,
-            source_text=source_text,
-            exact_match=is_exact,
-            start=ent.start_char,
-            end=ent.end_char,
-        )
-        results.append(result)
-        # if is_exact:
-        #     exact_match_found = True
 
     if not results:
         results.append(
