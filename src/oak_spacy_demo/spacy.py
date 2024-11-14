@@ -167,7 +167,7 @@ def build_ontology(oi) -> Dict[str, str]:
     """Build ontology dictionary efficiently."""
     ontology = {oi.label(curie): curie for curie in oi.entities() if oi.label(curie) is not None}
 
-    aliases = {term: mondo_id for mondo_id in ontology.values() for term in (oi.entity_aliases(mondo_id) or [])}
+    aliases = {term: curie for curie in ontology.values() for term in (oi.entity_aliases(curie) or [])}
 
     return {**ontology, **aliases}
 
