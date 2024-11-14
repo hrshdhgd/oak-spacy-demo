@@ -75,7 +75,7 @@ class OntologyCache:
 
 def setup_nlp_pipeline(model_name: str, patterns: List[Dict], linker: str) -> Language:
     """Entity ruler setup for spaCy pipeline."""
-    nlp = spacy.load(AnnotationConfig.MODELS.get(model_name, "sci_sm"))
+    nlp = spacy.load(AnnotationConfig.MODELS.get(model_name, "bc5cdr_md"))
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     ruler.add_patterns(patterns)
     return nlp
