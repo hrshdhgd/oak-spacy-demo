@@ -74,7 +74,7 @@ class OntologyCache:
 def setup_nlp_pipeline(model_name: str, patterns: List[Dict], linker: str) -> Language:
     """Entity ruler setup for spaCy pipeline."""
     # nlp = spacy.load(AnnotationConfig.MODELS.get(model_name, "bc5cdr_md"))
-    nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.load(model_name)
     ruler = nlp.add_pipe("entity_ruler", before="ner")
     ruler.add_patterns(patterns)
     return nlp
@@ -182,7 +182,7 @@ def annotate_via_spacy(
     resource: str,
     outfile: Path,
     cache_dir: Optional[Path] = None,
-    model: str = "en-core-web-sm	",
+    model: str = "en-core-web-sm",
     linker: str = "umls",
     batch_size: int = 1000,
     n_processes: int = None,
