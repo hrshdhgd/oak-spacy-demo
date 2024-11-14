@@ -30,5 +30,10 @@ def _get_uri_converter():
         {
             "MONDO": "http://purl.obolibrary.org/obo/MONDO_",
             "HP": "http://purl.obolibrary.org/obo/HP_",
+            "NCBITaxon": "http://purl.obolibrary.org/obo/NCBITaxon_",
+            "GO": "http://purl.obolibrary.org/obo/GO_",
+            "CHEBI": "http://purl.obolibrary.org/obo/CHEBI_",
+            "CL": "http://purl.obolibrary.org/obo/CL_",
+            "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
         }
     )
