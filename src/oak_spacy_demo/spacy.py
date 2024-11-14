@@ -112,7 +112,6 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
         except NoCURIEDelimiterError as e:
             logger.warning(f"Error expanding URI for {ent.label_}: {e}")
 
-
     if not results:
         results.append(
             AnnotationResult(
@@ -163,9 +162,9 @@ def writer_process(queue: mp.Queue, outfile: Path, outfile_unmatched: Path, done
 
 def build_ontology(oi) -> Dict[str, str]:
     """Build ontology dictionary efficiently."""
-    ontology = {oi.label(curie): curie for curie in oi.entities() if oi.label(curie) is not None}
+    ontology = {oi.label(curie).lower(): curie for curie in oi.entities() if oi.label(curie) is not None}
 
-    aliases = {term: curie for curie in ontology.values() for term in (oi.entity_aliases(curie) or [])}
+    aliases = {term.lower(): curie for curie in ontology.values() for term in (oi.entity_aliases(curie) or [])}
 
     return {**ontology, **aliases}
 
@@ -227,7 +226,7 @@ def annotate_via_spacy(
         ontology_cache.save(ontology)
 
     # Setup patterns and create shared nlp pipeline
-    patterns = [{"label": curie, "pattern": label} for label, curie in ontology.items()]
+    patterns = [{"label": curie, "pattern": pattern_label.lower()} for pattern_label, curie in ontology.items()]
     nlp = setup_nlp_pipeline(model_name=model, patterns=patterns, linker=linker)
 
     # Setup multiprocessing components
@@ -240,7 +239,7 @@ def annotate_via_spacy(
     writer_proc.start()
 
     # Process texts in parallel
-    texts = dataframe[column].unique()
+    texts = dataframe[column].str.lower().unique()
     text_batches = [texts[i : i + batch_size] for i in range(0, len(texts), batch_size)]
 
     with mp.Pool(processes=n_processes) as pool:
