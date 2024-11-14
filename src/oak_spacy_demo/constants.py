@@ -29,5 +29,6 @@ def _get_uri_converter():
     return curies.load_prefix_map(
         {
             "MONDO": "http://purl.obolibrary.org/obo/MONDO_",
+            "HP": "http://purl.obolibrary.org/obo/HP_",
         }
     )
