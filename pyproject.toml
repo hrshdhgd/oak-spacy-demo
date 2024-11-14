@@ -20,7 +20,6 @@ numpy = "<2.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = {version = ">=8.3.2"}
-pre-commit = {version = ">=3.3.3"}
 ruff = "^0.7.3"
 
 [tool.poetry.group.docs]
