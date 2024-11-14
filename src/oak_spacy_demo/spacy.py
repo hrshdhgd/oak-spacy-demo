@@ -182,7 +182,7 @@ def annotate_via_spacy(
     resource: str,
     outfile: Path,
     cache_dir: Optional[Path] = None,
-    model: str = "en-core-web-sm",
+    model: str = "en_core_web_sm",
     linker: str = "umls",
     batch_size: int = 1000,
     n_processes: int = None,
