@@ -171,7 +171,7 @@ def annotate_via_spacy(
     resource: str,
     outfile: Path,
     cache_dir: Optional[Path] = None,
-    model: str = "sci_sm",
+    model: str = "bc5cdr_md",
     linker: str = "umls",
     batch_size: int = 1000,
     n_processes: int = None,
