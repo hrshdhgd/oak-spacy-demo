@@ -11,11 +11,12 @@ python = "^3.11"
 click = "*"
 importlib-metadata = ">=8.2.0"
 oaklib = "^0.6.18"
-pyspark = "^3.5.3"
+# pyspark = "^3.5.3"
 pyarrow = "^18.0.0"
-scispacy = "^0.5.5"
-en-ner-bc5cdr-md = {url = "https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_bc5cdr_md-0.5.4.tar.gz"}
+# en-ner-bc5cdr-md = {url = "https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_ner_bc5cdr_md-0.5.4.tar.gz"}
 numpy = "<2.0.0"
+spacy = "<3.8"
+en-core-web-sm = {url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl"}
 
 
 [tool.poetry.group.dev.dependencies]
