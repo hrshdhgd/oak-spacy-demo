@@ -115,7 +115,11 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
     if not results:
         results.append(
             AnnotationResult(
-                label=None, uri=None, text=None, source_text=source_text, exact_match=False, # start=None, end=None
+                label=None,
+                uri=None,
+                text=None,
+                source_text=source_text,
+                exact_match=False,  # start=None, end=None
             )
         )
 
