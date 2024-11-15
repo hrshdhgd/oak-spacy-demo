@@ -1,165 +1,56 @@
-"""Main python file with PySpark-based text annotation functionality."""
-
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Dict, List
-
-import pandas as pd
-from oaklib import get_adapter
-from oaklib.datamodels.text_annotator import TextAnnotation, TextAnnotationConfiguration
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import array, col, explode, udf
-from pyspark.sql.types import ArrayType, StringType, StructField, StructType
+from pyspark.sql.functions import udf, col, split, explode, array_contains
+from pyspark.sql.types import ArrayType, StringType
+import pandas as pd
+from pathlib import Path
 
+# Initialize Spark session
+spark = SparkSession.builder.appName("OntologyAnnotation").getOrCreate()
 
-@dataclass
-class AnnotationResult:
-    """Container for annotation results to improve code readability."""
-
-    object_id: str
-    object_label: str
-    match_type: str
-    match_string: str
-    start: int
-    end: int
-
-
-def create_spark_session(app_name: str = "OAK Annotator") -> SparkSession:
-    """Create and configure Spark session."""
-    return (
-        SparkSession.builder.appName(app_name)
-        .config("spark.driver.memory", "4g")
-        .config("spark.executor.memory", "4g")
-        .config("spark.default.parallelism", "100")
-        .getOrCreate()
-    )
-
-
-def _overlap(a: str, b: str) -> int:
+# Define utility functions
+def _overlap(a, b):
     """Get number of characters in 2 strings that overlap using set intersection."""
     return len(set(a) & set(b))
 
+@udf(returnType=ArrayType(StringType()))
+def annotate_text(text, adapter):
+    """UDF to annotate text using the adapter"""
+    return [str(a.object_label) for a in adapter.annotate_text(text.replace("_", " "))]
 
-def _convert_annotation_to_dict(annotation: TextAnnotation) -> Dict:
-    """Convert TextAnnotation object to dictionary for Spark processing."""
-    return {
-        "object_id": annotation.object_id,
-        "object_label": annotation.object_label,
-        "match_type": annotation.match_type,
-        "match_string": annotation.match_string,
-        "start": annotation.start,
-        "end": annotation.end,
-    }
-
-
-def _annotate_single_term(
-    term: str, adapter: object, config: TextAnnotationConfiguration, exact_match: bool = True
-) -> List[Dict]:
-    """Annotate a single term and return results as list of dicts."""
-    if exact_match:
-        annotations = list(adapter.annotate_text(term.replace("_", " "), config))
-        return [_convert_annotation_to_dict(ann) for ann in annotations]
+@udf(returnType=ArrayType(StringType()))
+def annotate_text_relaxed(text, adapter):
+    """UDF to annotate text with relaxed matching"""
+    annotations = [a for a in adapter.annotate_text(text.replace("_", " ")) if len(a.object_label) > 2]
+    if annotations:
+        max_overlap_annotation = max(annotations, key=lambda obj: _overlap(obj.object_label, text))
+        max_overlap_annotation.subject_label = text if not max_overlap_annotation.subject_label else max_overlap_annotation.subject_label
+        return [str(max_overlap_annotation.object_label)]
     else:
-        annotations = [x for x in adapter.annotate_text(term.replace("_", " "), config) if len(x.object_label) > 2]
-        if annotations:
-            max_overlap_ann = max(annotations, key=lambda obj: _overlap(obj.object_label, term))
-            return [_convert_annotation_to_dict(max_overlap_ann)]
         return []
 
-
-def annotate_via_oak_spark(
-    input_df: pd.DataFrame,
-    column: str,
-    resource: str,
-    outfile: Path,
-) -> None:
-    """
-    Annotate dataframe column text using oaklib + llm with PySpark for distributed processing.
-
-    :param input_df: Input pandas DataFrame
-    :param column: Column to be annotated
-    :param resource: Ontology resource file path
-    :param outfile: Output file path
-
-    """
-    # Initialize Spark
-    spark = create_spark_session()
-
-    # Convert input DataFrame to Spark DataFrame
-    spark_df = spark.createDataFrame(input_df)
-
-    # Setup resource path and adapter
+def annotate_via_spark(df, column, resource, outfile, n_partitions=None):
+    """Annotate dataframe column text using PySpark"""
+    # Setup resource path
     resource_path = Path(resource)
     db_path = resource.replace(resource_path.suffix, ".db")
     resource = db_path if Path(db_path).exists() else resource
-    adapter = get_adapter(f"sqlite:{resource}")
 
-    # Create configurations
-    exact_config = TextAnnotationConfiguration(
-        include_aliases=True,
-        matches_whole_text=True,
-    )
-    partial_config = TextAnnotationConfiguration(
-        include_aliases=True,
-        matches_whole_text=False,
-    )
+    # Load adapter
+    adapter = spark.sparkContext._jvm.org.ihmc.ontology.bridge.oaklib.get_adapter(f"sqlite:{resource}")
 
-    # Define schema for annotation results
-    annotation_schema = ArrayType(
-        StructType(
-            [
-                StructField("object_id", StringType(), True),
-                StructField("object_label", StringType(), True),
-                StructField("match_type", StringType(), True),
-                StructField("match_string", StringType(), True),
-                StructField("start", StringType(), True),
-                StructField("end", StringType(), True),
-            ]
-        )
-    )
+    # Annotate dataframe column
+    df = df.repartition(n_partitions or spark.sparkContext.defaultParallelism)
+    annotated = df.withColumn("exact_matches", annotate_text(col(column), adapter))
+    unmatched = annotated.filter(~array_contains(col("exact_matches"), col("value")))
+    unmatched = unmatched.withColumn("partial_matches", annotate_text_relaxed(col(column), adapter))
 
-    # Create UDF for exact matching
-    @udf(annotation_schema)
-    def annotate_exact(term):
-        if term:
-            return _annotate_single_term(term, adapter, exact_config)
-        return []
-
-    # Create UDF for partial matching
-    @udf(annotation_schema)
-    def annotate_partial(term):
-        if term:
-            return _annotate_single_term(term, adapter, partial_config, exact_match=False)
-        return []
-
-    # Process exact matches
-    exact_matches = (
-        spark_df.select(col(column))
-        .distinct()
-        .withColumn("annotations", annotate_exact(col(column)))
-        .filter(col("annotations").isNotNull() & (col("annotations") != array()))
-        .select(col(column), explode("annotations").alias("annotation"))
-    )
-
-    # Process unmatched terms for partial matching
-    unmatched_terms = (
-        spark_df.select(col(column))
-        .distinct()
-        .withColumn("annotations", annotate_exact(col(column)))
-        .filter(col("annotations").isNull() | (col("annotations") == array()))
-        .withColumn("partial_annotations", annotate_partial(col(column)))
-        .filter(col("partial_annotations").isNotNull() & (col("partial_annotations") != array()))
-        .select(col(column), explode("partial_annotations").alias("annotation"))
-    )
-
-    # Convert results back to pandas and save
-    exact_matches.toPandas().to_csv(outfile, sep="\t", index=False)
-    unmatched_outfile = outfile.with_name(f"{outfile.stem}_unmatched{outfile.suffix}")
-    unmatched_terms.toPandas().to_csv(unmatched_outfile, sep="\t", index=False)
-
-    # Clean up
-    spark.stop()
-
+    # Write results
+    converter = spark.sparkContext._jvm.org.ihmc.ontology.bridge.oaklib.get_uri_converter()
+    annotated.select(col(column).alias("value"), explode("exact_matches").alias("object_label"), converter.expand(col("object_label")).alias("subject_label")).write.option("header", True).option("sep", "\t").option("quoting", 0).csv(str(outfile))
+    unmatched.select(col(column).alias("value"), explode("partial_matches").alias("object_label"), converter.expand(col("object_label")).alias("subject_label")).write.option("header", True).option("sep", "\t").option("quoting", 0).csv(str(outfile.parent / f"{outfile.stem}_unmatched{outfile.suffix}"))
 
 if __name__ == "__main__":
+    # Example usage
+    # df = spark.createDataFrame(pd.DataFrame({"text": ["example 1", "example 2", "example 3"]}))
+    # annotate_via_spark(df, "text", "path/to/resource.db", Path("output.tsv"), n_partitions=4)
     pass
