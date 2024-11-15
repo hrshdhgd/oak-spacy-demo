@@ -7,8 +7,8 @@ OBJECT_URI_COLUMN = "object_uri"
 OBJECT_LABEL_COLUMN = "object_label"
 SUBJECT_LABEL_COLUMN = "subject_label"
 MATCHES_WHOLE_TEXT_COLUMN = "matches_whole_text"
-START_COLUMN = "start"
-END_COLUMN = "end"
+# START_COLUMN = "start"
+# END_COLUMN = "end"
 CUSTOM_TERM_COLUMN = "custom_term"
 
 annotated_columns = [
@@ -17,8 +17,8 @@ annotated_columns = [
     OBJECT_LABEL_COLUMN,
     SUBJECT_LABEL_COLUMN,
     MATCHES_WHOLE_TEXT_COLUMN,
-    START_COLUMN,
-    END_COLUMN,
+    # START_COLUMN,
+    # END_COLUMN,
 ]
 
 SCI_SPACY_LINKERS = ["umls", "mesh", "go", "hpo", "rxnorm"]

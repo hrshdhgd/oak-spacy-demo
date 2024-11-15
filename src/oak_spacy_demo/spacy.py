@@ -47,8 +47,8 @@ class AnnotationResult:
     text: Optional[str]
     source_text: str
     exact_match: bool
-    start: Optional[int]
-    end: Optional[int]
+    # start: Optional[int]
+    # end: Optional[int]
 
 
 class OntologyCache:
@@ -105,8 +105,8 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
                 text=ent.text,
                 source_text=source_text,
                 exact_match=is_exact,
-                start=ent.start_char,
-                end=ent.end_char,
+                # start=ent.start_char,
+                # end=ent.end_char,
             )
             results.append(result)
         except NoCURIEDelimiterError as e:
@@ -115,7 +115,7 @@ def process_entities(doc: Doc, source_text: str) -> Tuple[List[AnnotationResult]
     if not results:
         results.append(
             AnnotationResult(
-                label=None, uri=None, text=None, source_text=source_text, exact_match=False, start=None, end=None
+                label=None, uri=None, text=None, source_text=source_text, exact_match=False, # start=None, end=None
             )
         )
 
@@ -132,8 +132,8 @@ def write_results_batch(results_batch: List[Tuple[List[AnnotationResult], bool]]
                 result.text,
                 result.source_text,
                 result.exact_match,
-                result.start,
-                result.end,
+                # result.start,
+                # result.end,
             ]
             queue.put((result.exact_match, row))
 
